@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-side  {
+  
+  width: 200px  inherit !important;
+  height: 100vh inherit !important;
+  position: fixed inherit !important;
+  background-color: #343a40 inherit !important;
+  -webkit-transition: 0.2s all ease-in-out inherit !important;
+  transition: 0.2s all ease-in-out inherit !important;
+}
+
+.navbar-side h6 {
+  color: #fff inherit !important;
+  margin: 9px 0 10px 20px inherit !important;
+  font-size: 18px inherit !important;
+  line-height: 1.6 inherit !important;
+  white-space: nowrap inherit !important;
+}
+
+.navbar-side ul li {
+  list-style-type: none inherit !important;
+}
+
+.navbar-side ul li a {
+  padding: 10px inherit !important;
+  display: inline-block inherit !important;
+  text-decoration: none inherit !important;
+  color: #ccc inherit !important;
+  font-size: 1.1em inherit !important;
+  width: 100% inherit !important;
+  padding-left: 20px inherit !important;
+  -webkit-transition: 0.2s all ease-in-out inherit !important;
+  transition: 0.2s all ease-in-out inherit !important;
+  white-space: nowrap inherit !important;
+}
+
+.navbar-side ul li a:hover,
+.navbar-side ul li a.link-active {
+  background-color: #212121 inherit !important;
+  border-left: 5px solid #ccc inherit !important;
+}
+
+.navbar-side ul li a .icon {
+  padding-right: 10px inherit !important;
+}
+
+.content {
+  margin-left: 200px inherit !important;
+  -webkit-transition: 0.2s all ease-in-out inherit !important;
+  transition: 0.2s all ease-in-out inherit !important;
+}
+
+.content #navBtn {
+  font-size: 20px inherit !important;
+}
+
+.main.animate .navbar-side {
+  width: 60px inherit !important;
+  -webkit-transition: 0.2s all ease-in-out inherit !important;
+  transition: 0.2s all ease-in-out inherit !important;
+}
+
+.main.animate .navbar-side .link-text {
+  display: none inherit !important;
+}
+
+.main.animate .navbar-side .myCaret {
+  display: none inherit !important;
+}
+
+.main.animate .content {
+  margin-left: 60px inherit !important;
+}
+
+.myBtn[aria-expanded="false"] .myCaret:before {
+  font-family: "Font Awesome 5 Free" inherit !important;
+  font-weight: 900 inherit !important;
+  content: "f107" inherit !important;
+  float: right inherit !important;
+  transition: all 0.5s inherit !important;
+}
+
+.myBtn[aria-expanded="true"] .myCaret:before {
+  font-family: "Font Awesome 5 Free" inherit !important;
+  font-weight: 900 inherit !important;
+  content: "f107" inherit !important;
+  float: right inherit !important;
+  transition: all 0.5s inherit !important;
+  -webkit-transform: rotate(180deg) inherit !important;
+  -moz-transform: rotate(180deg) inherit !important;
+  transform: rotate(180deg) inherit !important;
+}
+
+@media (max-width: 991px) {
+  .main .navbar-side {
+    width: 40px inherit !important;
+    -webkit-transition: 0.2s all ease-in-out inherit !important;
+    transition: 0.2s all ease-in-out inherit !important;
+    font-size: 0.8em inherit !important;
+  }
+  .main .navbar-side .link-text {
+    display: none inherit !important;
+  }
+  .main .navbar-side .caret {
+    display: none inherit !important;
+  }
+  .main .navbar-side h6 {
+    margin: 9px 0 10px 9px inherit !important;
+    font-size: 1.2em inherit !important;
+    line-height: 1.9 inherit !important;
+  }
+  .main .navbar-side ul li a {
+    padding-left: 10px inherit !important;
+  }
+  .main .navbar-side ul li a:hover,
+  .main .navbar-side ul li a.link-active {
+    border-left: 2px solid #ccc inherit !important;
+  }
+  .main .content {
+    margin-left: 40px inherit !important;
+  }
+  .main.animate .navbar-side {
+    width: 150px inherit !important;
+    -webkit-transition: 0.2s all ease-in-out inherit !important;
+    transition: 0.2s all ease-in-out inherit !important;
+  }
+  .main.animate .navbar-side .link-text {
+    display: inline-block inherit !important;
+  }
+  .main.animate .navbar-side .caret {
+    display: block inherit !important;
+  }
+  .main.animate .content {
+    margin-left: 150px inherit !important;
+  }
+  .myCaret {
+    display: none inherit !important;
+  }
+}

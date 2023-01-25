@@ -1,0 +1,122 @@
+<%- include('../layouts/adminpartial.ejs') %>
+  <!-- Table Start -->
+ 
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
+  <div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">Product</h6>
+                <div class="table-responsive">
+                    <table id="tableform" class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Brand</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Stock</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">price</th>
+                                <th scope="col">Size</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Options</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% productData.forEach((data)=>{ %>
+                            <tr>
+                                <td><%= data.name %></td>
+                                <td><%= data.brand %></td>
+                                <td><%= data.description %></td>
+                                <td><%= data.stock %></td>
+                                <td><%= data.category %></td>
+                                <td><%= data.price %></td>
+                                <td><%= data.size %></td>
+                                <td></td>
+                                <td>
+                                    <%if(data.isDeleted){ %>
+                                        <a href="/admin/restoreProduct/<%= data._id %>">
+                                        <button type="button" class="btn btn-success" >Restore</button>
+                                        </a>
+                                        <%}else{%>
+                                          <a href="/admin/editProduct/<%=data._id%>">
+                                            <button type="button" class="btn btn-dark" >Edit</button>
+                                          </a>
+
+                                            <button type="button" class="btn btn-outline-danger mt-2 mr-1   " data-bs-toggle="modal" 
+                                            data-bs-target="#exampleModal-<%= data._id %>">
+                                             <span class="fa fa-trash mt-1 "></span>
+                                           </button>
+                                           <%}%>
+                                </td>
+                                <!-- modal -->
+                                <div
+                                class="modal fade"
+                                id="exampleModal-<%= data._id %>"
+                                tabindex="-1"
+                                aria-labelledby="exampleModalLabel"
+                                aria-hidden="true"
+                                >
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                        CONFIRMATION
+                                      </h1>
+                                      <button
+                                        type="button"
+                                        class="btn-close"
+                                        data-bs-dismiss="modal"
+                                        aria-label="Close"
+                                      ></button>
+                                    </div>
+                                    <div class="modal-dialog">
+                                      Are you confirm ?
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button
+                                        type="button"
+                                        class="btn btn-secondary"
+                                        data-bs-dismiss="modal"
+                                        style="background-color: rgba(0, 0, 0, 0.696);"
+                                      >
+                                        Close
+                                      </button>
+                                      <a href="/admin/deleteProduct/<%= data._id %>"
+                                        ><button type="button" class="btn btn-danger">
+                                          Delete
+                                        </button></a
+                                      >
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                                      <!-- modal end -->
+                            </tr>
+                 
+                            <%})%>
+                        </tbody>
+                    </table>
+                    <div class="text-center mb-2">
+                        <a href="/admin/addProduct" class="btn btn-secondary">Add Product</a>
+                        </div>
+                </div>          
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+    $('#tableform').DataTable();
+});
+</script>
+<!-- Table End -->

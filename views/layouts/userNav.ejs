@@ -1,0 +1,57 @@
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <a href="/">Home</a>
+    <a href="about.html">About</a>
+
+    <a href="testimonial.html">testimonial</a>
+    <%if(user){%>
+      <a href="/logout">Logout</a>
+      <%}%>
+  </div>
+  <div id="main">
+    <!-- header section start -->
+    <div class="header_section">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="search_icon">
+              <img src="/user/images/search-icon.png" />
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="logo"><img src="/user/images/logo.png" /></div>
+          </div>
+          <div class="col-sm-4">
+            <div class="togle_3">
+              <div class="left_main">
+                <div class="menu_main">
+                  <%if(user){%>
+                 <a href="/addToCart"> <img style="height: 2rem;width: 2rem;" src="https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-royal-brites-poster-foam-board-photo-paper-royal-lace-19.png" /></a> 
+                  <%}else{%>
+                    <a href="/login"><i class="fa fa-fw fa-user"></i> Login</a>
+                    <%}%>
+                 
+                  
+                </div>
+              </div>
+              <div class="middle_main">
+                <div class="shoping_bag">
+                  <a href="/shop">
+                    <img src="/user/images/shopping-bag.png" />
+                  </a>
+                  
+                </div>
+              </div>
+              <div class="right_main">
+                <div class="togle_main">
+                  <a class="class=" openbtn onclick="openNav()"
+                    ><img
+                      src="/user/images/togle-menu-icon.png"
+                      style="max-width: 100%"
+                  /></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
