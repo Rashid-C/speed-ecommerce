@@ -1,0 +1,135 @@
+<%- include('../layouts/adminpartial.ejs') %>
+<script src="/js/categoryValidation.js" defer></script>
+
+  <!-- Table Start -->
+ 
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
+  <div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">Categories</h6>
+                <div class="table-responsive">
+                    <table id="tableform" class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">SI NO</th>
+                                <th scope="col">CATEGORYID</th>
+                                <th scope="col">CATEGORY NAME</th>
+                                
+                                <th scope="col">OPTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% fullCategoryData.forEach((data,index)=>{ %>
+                            <tr>
+                                <td><%= index+1%></td>
+                                <td><%= data._id %></td>
+                                <td><%= data.category %></td>
+                                <td>
+                                 <button  data-bs-toggle="modal"  name="edit" data-bs-target="#EDITModal<%= data._id %>" type="submit" class="btn btn-warning">EDIT</button>
+                                  <a href="/admin/deleteCategory/<%=data._id%>">
+                                  <button type="submit"  class="btn btn-danger">DELETE</button></a></td>
+
+                               
+                                
+                                <!---------------------------------------- Edit modal start ------------------------------------------->
+                                <div
+                                class="modal fade"
+                                id="EDITModal<%= data._id %>"
+                                tabindex="-1"
+                                aria-labelledby="exampleModalLabel"
+                                aria-hidden="true"
+                                >
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                                      <button type="button"  class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+         <form action="/admin/editCategory/<%=data._id%>" method="post" onsubmit="return categoryValidation(this)">
+                                        <div class="mb-3">
+                                        </div>
+                                        <div class="mb-3">
+                                          <label for="recipient-name"  class="col-form-label">Edit Category:</label>
+                                          <input type="text" required name="category" placeholder="<%=data.category%>"  class="form-control" id="recipient-name">
+                                          <p id="categoryNameError" class="text-danger"></p>
+                                        </div>  
+                         
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                      <button type="submit" class="btn btn-success">Save Category</button>
+                                    </div>
+                                  
+                                  </div>
+                                 </form>
+                                </div>
+                              </div>
+
+
+                                <!---------------------------------- ---Edit modal end ------------------------------------------->
+      
+                            </tr>
+                 
+                            <%})%>
+                        </tbody>
+                    </table>
+                    <div class="text-center mb-2">
+                      <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success">Add Category</button>
+                        </div>
+                         <!----------------------------------------- modal ----------------------------------------------------------------------->
+       <div
+       class="modal fade"
+       id="exampleModal"
+       tabindex="-1"
+       aria-labelledby="exampleModalLabel"
+       aria-hidden="true"
+       >
+       <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-header">
+             <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+             <button type="button"  class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+           </div>
+           <div class="modal-body">
+             <form action="/admin/addCategory" method="post" >
+               <div class="mb-3">
+               </div>
+               <div class="mb-3">
+                 <label for="recipient-name"  class="col-form-label">Add New Category:</label>
+                 <p id="CategoryNameError" class="text-danger"></p>
+                 <input type="text" name="category" placeholder="Category" required class="form-control" id="recipient-name">
+               </div>  
+
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+             <button type="submit" class="btn btn-success">Save Category</button>
+           </div>
+         
+         </div>
+    </form>
+       </div>
+     </div>
+          <!------------------------------------------------- modal end------------------------------------------->
+                </div>          
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+    $('#tableform').DataTable();
+});
+</script>

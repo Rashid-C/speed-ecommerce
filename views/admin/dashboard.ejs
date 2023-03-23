@@ -1,0 +1,143 @@
+<%- include('../layouts/adminpartial.ejs') %>
+    <section>
+        <div class="row container-fluid ">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 style="background-color: blue;" class="card-title backgroundColor">TOTAL ORDERS</h5>
+                  <p class="card-text"><%=totalOrder%>.</p>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 style="background-color: blue;" class="card-title">TOTAL CUSTOMERS</h5>
+                  <p class="card-text"><%=totalUser%>.</p>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 style="background-color: blue;" class="card-title">REVENUE</h5>
+                  <p class="card-text"><%=totalRevenue%>.</p>
+                </div>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 style="background-color: blue;" class="card-title">TOTAL PRODUCTS</h5>
+                  <p class="card-text"><%=totalProduct%>.</p>
+                </div>
+              </div>
+        
+        </div>
+    </section>
+
+
+    <section>
+        <div class="row">
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+          <body>
+          
+          <canvas id="Chart" style="width:100%;max-width:600px"></canvas>
+          
+          <script>
+          var xValues = [ "Cash on Delivery","Online Payment",];
+          var yValues = <%-JSON.stringify(pie)%>;
+          var barColors = [
+            "#b91d47",
+            "#00aba9",
+          
+          ];
+          
+          new Chart("Chart", {
+            type: "doughnut",
+            data: {
+              labels: xValues,
+              datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+              }]
+            },
+            options: {
+              title: {
+                display: true,
+                text: "Customers Payment Methods"
+              }
+            }
+          });
+          </script>
+        </div>
+    </section>
+
+
+
+  
+
+    <section>
+      <div class="row">
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+<div id="myPlot2" style="width:100%;max-width:700px"></div>
+
+<script>
+var xArray = ["DELIVARY", "SHIPPING", "PENDING","CANCEL",  ];
+var yArray = <%-JSON.stringify(barChart)%>;
+
+var data = [{
+  x:xArray,
+  y:yArray,
+  type:"bar"
+}];
+
+var layout = {title:"ORDER STATUS"};
+
+Plotly.newPlot("myPlot2", data, layout);
+</script>
+      </div>
+    </section>
+
+
+    <section>
+      <div class="row">
+
+        <section>
+          <div class="row container-fluid ">
+              <div class="card" style="width: 18rem;">
+                  <div class="card-body">
+                    <a href="/admin/salesReportDay"><button type="submit" class="btn btn-primary">TOTAL SALES BY DAY</button></a> 
+                  </div>
+                </div>
+  
+                <div class="card" style="width: 18rem;">
+                  <div class="card-body">
+                    <a href="/admin/salesReportWeek"><button type="button" class="btn btn-warning">TOTAL SALES BY WEEK</button></a>
+                  </div>
+                </div>
+  
+                <div class="card" style="width: 18rem;">
+                  <div class="card-body">
+                    <a href="/admin/salesReportMonth">
+                      <button type="button" class="btn btn-info">TOTAL SALES BY MONTHS</button>
+
+                    </a>
+                  </div>
+                </div>
+  
+                <div class="card" style="width: 18rem;">
+                  <div class="card-body">
+                    <a href="/admin/salesReportYear">
+                      <button type="button" class="btn btn-dark">TOTAL SALES BY YEAR</button>
+
+                    </a>
+                  </div>
+                </div>
+          
+          </div>
+      </section>
+      </div>
+    </section>
+
+
+
+  

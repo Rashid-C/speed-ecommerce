@@ -1,114 +1,184 @@
 <%-include('../layouts/head.ejs')%>
 <%-include('../layouts/userNav.ejs')%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+ <body>
+  
+
 <section class="h-100 gradient-custom">
  
     <div class="container py-5">
+
+     
+
       <div class="row d-flex justify-content-center my-4">
         <div class="col-md-8">
           <div class="card mb-4">
             <div class="card-header py-3">
-              <h5 class="mb-0">Cart - 1 items</h5>
+              <h3 class="mb-0">CART ITEMS</h3>
             </div>
+            <%if(product._id){%>
+            <% product.forEach((product)=>{ %>
+             
             <div class="card-body">
-              <!-- Single item -->
+        
+             
               <div class="row">
                 <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
-                  <!-- Image -->
+                
                   <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/12a.webp"
+                    <img  width="100%" src="<%=product.productDetails.image[0].url%>"
                       class="w-100" alt="Blue Jeans Jacket" />
-                    <a href="#!">
+                    <a href="#">
                       <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
                     </a>
                   </div>
                   <!-- Image -->
                 </div>
-  
                 <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
                   <!-- Data -->
-                  <p><strong>Blue denim shirt</strong></p>
-                  <p>Color: blue</p>
-                  <p>Size: M</p>
-                  <button type="button" class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
-                    title="Remove item">
-                    <i class="fas fa-trash"></i>
-                  </button>
-                  <button type="button" class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
-                    title="Move to the wish list">
-                    <i class="fas fa-heart"></i>
-                  </button>
-                  <!-- Data -->
-                </div>
-  
+                  <p><strong><%=product.productDetails.price %></strong></p>
+                  <p> <%=product.productDetails.brand %></p>
+                   </div>
                 <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                  <a href="/removeCart/<%=product.productDetails._id %>" id="Remove<%=product.productDetails._id%>" class="btn btn-danger">Remove</a>
                   <!-- Quantity -->
                   <div class="d-flex mb-4" style="max-width: 300px">
-                    <!-- <button class="btn btn-primary px-3 me-2"
-                      onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                      <i class="fas fa-minus"></i>
-                    </button> -->
+                    
   
                     <div class="form-outline">
-                      <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control" />
+                       <!-- Button min-->
+                      <button class="btn btn-info mr-3"  onclick="changeQuantity('<%=product._id%>','<%=product.productDetails._id%>',-1)">-</button>
+                          <p class="Quantity" id="<%=product.productDetails._id%>"><%=product.quantity%></p>
+                      <button class="btn btn-info mr-3" onclick="changeQuantity('<%=product._id%>','<%=product.productDetails._id%>',1)">+</button>
+                      <!-- Button max-->
+                      
                       <label class="form-label" for="form1">Quantity</label>
                     </div>
-  
-                  
                   </div>
                   <!-- Quantity -->
-  
-                
                 </div>
               </div>
+  <hr>
               <!-- Single item -->
-  
-     
-  
-              <!-- Single item -->
-            
                 </div>
-  
-           
-          </div>
-         
-          
+                <% }) %>
+                <%}else{%>
+                  <h1 class="text-danger font-weight-bold">No Cart Data Available Here...!</h1>
+
+                  <%}%>
+          </div> 
         </div>
         <div class="col-md-4">
+         
+          <form action="" id="checkout-form">
           <div class="card mb-4">
             <div class="card-header py-3">
-              <h5 class="mb-0">Summary</h5>
+              <h5 class="mb-0">Price Details</h5>
             </div>
             <div class="card-body">
+            
               <ul class="list-group list-group-flush">
                 <li
                   class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                  Products
-                  <span>$53.98</span>
+                  Price
+                  <span><%=sum%></span>
                 </li>
+                
                 <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                  Shipping
-                  <span>Gratis</span>
+                  Delivery Charges
+                  <span>FREE Delivery</span>
                 </li>
                 <li
                   class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                   <div>
-                    <strong>Total amount</strong>
+                    <strong>Total Amount</strong>
                     <strong>
-                      <p class="mb-0">(including VAT)</p>
+                     
                     </strong>
                   </div>
-                  <span><strong>$53.98</strong></span>
+                  <span><strong></strong></span>
                 </li>
               </ul>
-  
-              <button type="button" class="btn btn-primary btn-lg btn-block">
-                Go to checkout
-              </button>
-            </div>
+               <a href="/checkOut" class="btn btn-primary">Go to checkout</a>
+           
           </div>
         </div>
+      </form>
+    
       </div>
+     
     </div>
   </section>
+
+</body>
+ 
   <%-include('../layouts/userFooter.ejs')%>
   <%-include('../layouts/footer.ejs')%>
+  <!-- Ajax -->
+ 
+   <!-- Javascript files-->
+   <script src="js/jquery.min.js"></script>
+   <script src="js/popper.min.js"></script>
+   <script src="js/bootstrap.bundle.min.js"></script>
+   <script src="js/jquery-3.0.0.min.js"></script>
+   <script src="js/plugin.js"></script>
+   <!-- sidebar -->
+   <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+   <script src="js/custom.js"></script>
+   <!-- javascript -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+   <script src="js/owl.carousel.js"></script>
+   <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+   <script>
+     $(document).ready(function () {
+       $(".fancybox").fancybox({
+         openEffect: "none",
+         closeEffect: "none",
+       });
+     });
+     $("#myCarousel").carousel({
+       interval: false,
+     });
+   </script>
+
+   <script>
+     function openNav() {
+       document.getElementById("mySidebar").style.width = "250px";
+       document.getElementById("main").style.marginLeft = "250px";
+     }
+
+     function closeNav() {
+       document.getElementById("mySidebar").style.width = "0";
+       document.getElementById("main").style.marginLeft = "0";
+     }
+   </script>
+   <!--  -->
+   <script>
+    function changeQuantity(cartId,proId,count) {
+      const Qnuantity =  document.getElementById(proId).innerText
+      // alert(count)
+      
+      // value ===Quandity
+      if (Qnuantity == 1 && count == -1 ) {
+        document.getElementById('Remove'+proId).click();
+        // alert(value)
+      } else {
+        
+      const quantity = parseInt(document.getElementById(proId).innerHTML)
+      $.ajax({
+        url:'/changeQuantity',
+        data:{
+          cart : cartId,
+         product : proId,
+         count,
+        },
+        method:'post',
+        success:(response)=>{
+          location.reload()
+        }
+      })
+
+    }
+
+    }
+   </script>

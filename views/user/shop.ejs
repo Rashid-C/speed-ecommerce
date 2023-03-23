@@ -1,190 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
-   <head>
-      <!-- basic -->
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <!-- mobile metas -->
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-      <!-- site metas -->
-      <title>Gallery</title>
-      <meta name="keywords" content="">
-      <meta name="description" content="">
-      <meta name="author" content="">
-      <!-- bootstrap css -->
-      <link rel="stylesheet" href="/user/css/bootstrap.min.css">
-      <!-- style css -->
-      <link rel="stylesheet" href="/user/css/style.css">
-      <link rel="stylesheet" href="/user/css/card.css" />
-      <!-- Responsive-->
-      <link rel="stylesheet" href="/user/css/responsive.css">
-      <!-- fevicon -->
-      <!-- <link rel="icon" href="images/fevicon.png" type="image/gif" /> -->
-      <!-- Scrollbar Custom CSS -->
-      <link rel="stylesheet" href="/user/css/jquery.mCustomScrollbar.min.css">
-      <!-- Tweaks for older IEs-->
-      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-      <!-- owl stylesheets --> 
-      <link rel="stylesheet" href="/user/css/owl.carousel.min.css">
-      <link rel="stylesheet" href="css/owl.theme.default.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+<!-- card start -->
+<%-include('../layouts/head.ejs')%>
+ <%-include('../layouts/userNav.ejs')%>
+ <link rel="stylesheet" href="/user/css/card.css" />
 
-      
-      <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-   </head>
-   <!-- body -->
-   <body>
 
-<div id="mySidebar" class="sidebar">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="gallery.html">gallery</a>
-  <a href="testimonial.html">testimonial</a>
-  <a href="contact.html">Contact</a>
+
+
+<div class="container mx-auto mt-4 ">
+
+
+   <!-- dropdown -->
+ <div class="btn-group">
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Filters
+  </button>
+  <div class="dropdown-menu">
+    <%filterCategory.forEach((category)=>{%>
+    <a href="/filterView/<%=category.category%>" class="dropdown-item" href="#"><%=category.category%></a>
+    <%})%>
+ 
+  </div>
 </div>
 
+ <!-- dropdown end -->
+ 
+   <div class="row ">
+    
+    <!--  -->
 
+<%if (productData[0]._id){%>
 
-<div id="main">
-      <!-- header section start -->
-      <div class="header_section">
-         <div class="row">
-            <div class="col-sm-4">
-               <div class="search_icon"><img src="/user/images/search-icon.png"></div>
-            </div>
-            <div class="col-sm-4">
-               <div class="logo"><img src="/user/images/logo.png"></div>
-            </div>
-            <div class="col-sm-4">
-               <div class="togle_3">
-                  <div class="left_main">
-                     <div class="menu_main">
-                        <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
-                     </div>
-                  </div>
-                  <div class="middle_main">
-                     <div class="shoping_bag"><img src="/user/images/shopping-bag.png"></div>
-                  </div>
-                  <div class="right_main">
-                     <div class="togle_main"><a class="class="openbtn onclick="openNav()"><img src="/user/images/togle-menu-icon.png" style="max-width: 100%;"></a></div>
-                  </div>
-               </div>
-            </div>
-         </div>
-     </div>
+    <% productData.forEach((product)=>{ %>
+       <%if(!product.isDeleted){%>
+        <a href="/productView/<%=product._id%>">
 
-   <!-- our section start -->
-   
-<!-- card start -->
-
-
-
-   <div class="container mx-auto mt-4 ">
-     <div class="row ">
-      <!--  -->
-      <% productData.forEach((product)=>{ %>
-         <%if(!product.isDeleted){%>
-
-       <div class="col-md-4 mt-5 pt-5 ">
-         <div class="card" style="width: 18rem">
-           <img
-             src="https://i.imgur.com/ZTkt4I5.jpg"
-             class="card-img-top"
-             alt="..."
-           />
-           <div class="card-body">
-             <h5 class="card-title text-white"><%=product.name%></h5>
-             <h6 class="card-subtitle mb-2 text-muted"><%=product.brand%></h6>
-             <p class="card-text">
-              <%=product.description%>
-             </p>
-             <a href="#" class="btn mr-2"
-               > add to cart</a
-             >
-             <a href="#" class="btn"> Buy now</a>
-           </div>
+     <div class="col-md-4 mt-5 pt-5 ">
+       <div class="card" style="width: 18rem">
+         <img
+         width="100% "
+         height="250rem "
+           src="<%=product.image[0].url%>"
+           class="card-img-top"
+           alt="..."
+         />
+         <div class="card-body">
+           <h5 class="card-title text-white"><%=product.name%></h5>
+           <h6 class="card-subtitle mb-2 text-muted"><%=product.brand%></h6>
+           <h5 class="card-title text-white"><%=product.category%></h5>
+           <h6 class="card-subtitle mb-2 text-muted"><strong><%=product.price%></strong></h6>
+         
+           <a href="/addToCart/<%=product._id%>" class="btn mr-2"
+             > add to cart</a
+           >
+           <a href="/productView/<%=product._id%>" class="btn"> Buy now</a>
          </div>
        </div>
+     </div>
+    </a>
+
+    
+    <%}%>
+    <%})%>
+    <%}else{%>
+      <h1 class="text-danger font-weight-bold">No Product Data Available Here...!</h1>
+
+
       <%}%>
-       <%})%>
-     <!-- card end -->
-
-   <!-- footer section start -->
-   <div class="footer_section layout_padding ">
-      <div class="container">
-         <div class="row">
-            <div class="col-sm-4">
-               <h2 class="important_text">Important Link</h2>
-               <div class="footer_menu">
-                  <ul>
-                     <li><a href="#">Home</a></li>
-                     <li><a href="#">About Us</a></li>
-                     <li><a href="#">Our Latest Event</a></li>
-                     <li><a href="#">Our Latest Article</a></li>
-                     <li><a href="#">Join With Us</a></li>
-                  </ul>
-               </div>
-            </div>
-            <div class="col-sm-4">
-               <h2 class="important_text">Social Link</h2>
-               <div class="footer_menu">
-                  <ul>
-                     <li><a href="#">Facebook</a></li>
-                     <li><a href="#">Linkedin</a></li>
-                     <li><a href="#">Twitter</a></li>
-                     <li><a href="#">Youtube</a></li>
-                     <li><a href="#">Pinterest</a></li>
-                  </ul>
-               </div>
-            </div>
-         
-         
-         </div>   
-      </div>
-   </div>
-   <!-- footer section start -->
-   <!-- copyright section start -->
-   
-
-      <!-- Javascript files-->
-      <script src="js/jquery.min.js"></script>
-      <script src="js/popper.min.js"></script>
-      <script src="js/bootstrap.bundle.min.js"></script>
-      <script src="js/jquery-3.0.0.min.js"></script>
-      <script src="js/plugin.js"></script>
-      <!-- sidebar -->
-      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-      <script src="js/custom.js"></script>
-      <!-- javascript --> 
-      <script src="js/owl.carousel.js"></script>
-      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-      <script>
-         $(document).ready(function(){
-         $(".fancybox").fancybox({
-         openEffect: "none",
-         closeEffect: "none"
-         });
-      })
-       $('#myCarousel').carousel({
-            interval: false
+      
+   <!-- card end -->
+   <%-include('../layouts/userFooter.ejs')%>
+      <%-include('../layouts/footer.ejs')%>
+       <!-- Javascript files-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/plugin.js"></script>
+    <!-- sidebar -->
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/custom.js"></script>
+    <!-- javascript -->
+    <script src="js/owl.carousel.js"></script>
+    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".fancybox").fancybox({
+          openEffect: "none",
+          closeEffect: "none",
         });
-      </script>
+      });
+      $("#myCarousel").carousel({
+        interval: false,
+      });
+    </script>
 
-      <script>
-function openNav() {
-  document.getElementById("mySidebar").style.width = "250px";
-  document.getElementById("main").style.marginLeft = "250px";
-}
+    <script>
+      function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+      }
 
-function closeNav() {
-  document.getElementById("mySidebar").style.width = "0";
-  document.getElementById("main").style.marginLeft= "0";
-}
-</script>
-
-   </body>
-   </html>
+      function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+      }
+    </script>

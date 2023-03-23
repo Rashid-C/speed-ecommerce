@@ -1,0 +1,153 @@
+<%- include('../layouts/adminpartial.ejs') %>
+  <!-- Table Start -->
+ 
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
+  <div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">Orders</h6>
+                <div class="table-responsive">
+                    <table id="tableform" class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">SI NO</th>
+                                <th scope="col">USER NAME</th>
+                                <th scope="col">PRODUCT ID</th>
+                                <th scope="col">PAYMENT METHOD</th>
+                                <th scope="col">PAYMENT STATUS</th>
+                                <th scope="col">ORDER DATE</th>
+                                <th scope="col">TOTAL PRICE</th>
+                                <th scope="col">ORDER STUTUS</th>
+                                <th scope="col">OPTIONS</th>
+                                <th scope="col">VIEW DETAILS</th>
+                              
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% orderData.forEach((data,index)=>{ %>
+                            <tr><td><%= index+1%></td>
+                           
+                                <td><%= data.address.firstName %></td>
+                                <td><%= data.orderItem %></td>
+                                <td><%= data.paymentMethod %></td>
+                                <td><%= data.paymentStatus %></td>
+                                <td><%= data.createdAt.getDate()+'-'+(data.createdAt.getMonth()+1)+'-'+data.createdAt.getFullYear() %></td>
+                                <td><%= data.totalAmount %></td>
+                                <td><%=data.orderStatus%></td>
+                                <td><button type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal-<%= data._id %>" class="btn btn-danger">Edit</button>
+                                </td>
+                                <td><a href="/admin/view_Orders/<%=data._id%>"><button type="button" class="btn btn-info">View</button></a></td>
+                                
+                            
+                                <!-- modal -->
+                                <div
+                                class="modal fade"
+                                id="exampleModal-<%= data._id %>"
+                                tabindex="-1"
+                                aria-labelledby="exampleModalLabel"
+                                aria-hidden="true"
+                                >
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                                      <button type="button"  class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <form action="/admin/editOrder/<%= data._id %>" method="post">
+                                        <div class="mb-3">
+                                        </div>
+                                        <div class="mb-3">
+                                          <label for="recipient-name"  class="col-form-label">User Name:</label>
+                                          <input type="text" readonly value="<%= data.address.firstName %>" class="form-control" id="recipient-name">
+                                        </div>
+                                       
+                                        <div class="mb-3">
+                                          <label for="message-text" class="col-form-label">Products:</label>
+                                          <input type="text" readonly value="<%= data.id %>" class="form-control" id="recipient-name">
+                                        </div>
+
+                                        <div class="mb-3">
+                                          <label for="message-text" class="col-form-label">Payment Method:</label>
+                                          <input type="text" readonly class="form-control" value="<%= data.paymentMethod %>" id="recipient-name">
+                                         
+                                        </div>
+
+                                        <div class="mb-3">
+                                         
+                                          <label for="message-text" class="col-form-label">Payment Status:</label>
+                                          <select name="paymentstatus" class="form-select"   aria-label="Default select example">
+                                            
+                                            <%if(data.paymentMethod == 'cod'){%>
+                                              <option selected value="Not Paid">Not Paid</option>
+                                            <option value="paid">Paid</option>
+                                            <%}else{%>
+                                              <option  selected value="Paid">Paid</option>
+                                              <option value="Not Paid">Not Paid</option>
+                                              <%}%>
+                                    
+                                          </select>
+                                        </div>
+
+                                        <div class="mb-3">
+                                          <label for="message-text" class="col-form-label">Order Date:</label>
+                                          <input type="date" readonly value="<%= data.createdAt.getDate()+'-'+(data.createdAt.getMonth()+1)+'-'+data.createdAt.getFullYear() %>" class="form-control" id="recipient-name">
+                                        </div>
+
+                                        <div class="mb-3">
+                                          <label for="message-text" class="col-form-label">Total Price:</label>
+                                          <input type="text" readonly class="form-control" value="<%= data.totalAmount %>" id="recipient-name">
+                                        </div>
+
+                                        <div class="mb-3">
+                                          <label for="message-text" class="col-form-label">Order Status:</label>
+                                          <select name="orderstatus" class="form-select" aria-label="Default select example">
+                                          
+                                            <option selected value="Pending">Pending</option>
+                                            <option value="Shipping">Shipping</option>
+                                            <option value="Delivered">Delivered</option>
+                                            <option value="Cancelled">Cancelled</option>
+                                          </select>
+                                        </div>
+
+                                        
+
+
+                                     
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                      <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    </div>
+                                  </form>
+                                  </div>
+                                </div>
+                              </div>
+                                      <!-- modal end -->
+                            </tr>
+                 
+                            <%})%>
+                        </tbody>
+                    </table>
+                    
+                </div>          
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+    $('#tableform').DataTable();
+});
+</script>
+<!-- Table End -->

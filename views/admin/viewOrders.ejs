@@ -1,0 +1,71 @@
+<%- include('../layouts/adminpartial.ejs') %>
+  <!-- Table Start -->
+ 
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
+  <div class="container-fluid pt-4 px-4">
+    <form action="/viewOrders">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">ViewOrders</h6>
+                <div class="table-responsive">
+                    <table id="tableform" class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">SI NO</th>
+                                <th scope="col">USER NAME</th>
+                                <th scope="col">ADDRESS</th>
+                                <th scope="col">PRODUCT NAME</th>
+                                <th scope="col">BRAND</th>
+                                <th scope="col">SIZE</th>
+                                <th scope="col">IMAGE</th>
+                                <th scope="col">IS DELETED</th>
+                                <th scope="col">DESCRIPTION </th>
+                                
+                            </tr>
+                        </thead>
+                        <% result.forEach((data,index)=>{ %>
+                        <tbody>
+                           
+                            <tr>
+                           
+                                <td><%= index+1 %></td>
+                                <td><%= data.address.firstName %></td>
+                                <td><%= data.address.lastname %><br><%= data.address.house %><br><%= data.address.street %><br><%= data.address.city %><br><%= data.address.district %><br><%= data.address.state %><br><%= data.address.pin%><br><%= data.address.mobile %></td>
+                                <td><%=data.productDetails[0].name%></td>
+                                <td><%=data.productDetails[0].brand%></td>
+                                <td><%=data.productDetails[0].size%></td>
+                                <td><img src="<%=  data.productDetails[0].image[0].url %>" style="width: 75px;height: 75px;" alt=""><br><img src="<%=  data.productDetails[0].image[1].url %>" style="width: 75px;height: 75px;" alt=""><br><img src="<%=  data.productDetails[0].image[2].url %>" style="width: 75px;height: 75px;" alt=""></td>
+                                <td><%=data.productDetails[0].isDeleted%></td>
+                                <td><%=data.productDetails[0].description%></td>
+
+                              
+                                <!-- modal -->
+                           
+                                      <!-- modal end -->
+                            </tr>
+                        
+                        </tbody>
+                        <%})%>
+                    </table>
+                    
+                </div>          
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+</div>
+</div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+    $('#tableform').DataTable();
+});
+</script>
+<!-- Table End -->

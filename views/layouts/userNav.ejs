@@ -1,9 +1,15 @@
+
 <div id="mySidebar" class="sidebar">
+
+  <link rel="stylesheet" href="/styles/search.css">
+
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
     <a href="/">Home</a>
-    <a href="about.html">About</a>
+    <a href="/userProfile">Profile</a>
+    <a href="/getCart">Cart</a>
 
-    <a href="testimonial.html">testimonial</a>
+    <a href="/wishList">Wishlist</a>
+    <a href="/MyOrders">My Orders</a>
     <%if(user){%>
       <a href="/logout">Logout</a>
       <%}%>
@@ -15,18 +21,34 @@
         <div class="row">
           <div class="col-sm-4">
             <div class="search_icon">
-              <img src="/user/images/search-icon.png" />
+              <!-- <img src="/user/images/search-icon.png" /> -->
+              <!-- tttt  search icon start -->
+               <form action="/search"  method="post">
+              <div class="searchBox">
+                <div class="shadow"></div>
+                <input type="text" name="search" placeholder="Search Anything You Want to us....!">
+                <button class="mb-2"><ion-icon name="search-outline"></ion-icon></button>
+            
+               </div>
+              </form> 
+               <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+            <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+              <!-- tttttttttttt -->
+              
             </div>
           </div>
           <div class="col-sm-4">
-            <div class="logo"><img src="/user/images/logo.png" /></div>
+            <a href="/"><div class="logo"><img src="/user/images/logo.png" /></div></a>
+            
           </div>
           <div class="col-sm-4">
             <div class="togle_3">
               <div class="left_main">
                 <div class="menu_main">
                   <%if(user){%>
-                 <a href="/addToCart"> <img style="height: 2rem;width: 2rem;" src="https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-royal-brites-poster-foam-board-photo-paper-royal-lace-19.png" /></a> 
+                 <a href="/getCart"> <span id="cartCount" class="badge badge-warning"><%=cartCount%></span><img style="height: 2rem;width: 2rem;" src="https://www.freepnglogos.com/uploads/shopping-cart-png/shopping-cart-royal-brites-poster-foam-board-photo-paper-royal-lace-19.png" /></a> 
                   <%}else{%>
                     <a href="/login"><i class="fa fa-fw fa-user"></i> Login</a>
                     <%}%>

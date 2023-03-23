@@ -5,37 +5,37 @@ const productsSchema=new schema(
     {
         name:{
             type:String,
-            // required:true,
+            required:true,
         },
     
         brand:{
             type:String,
-            // required:true,
+            required:true,
         },
     
         description:{
             type:String,
-            // required:true
+            required:true
         },
     
         stock: {
             type: Number,
-            // required: true,
+            required: true,
           },
     
         category:{
             type:String,
-            // required:true
+            required:true
         },
     
         price:{
             type:Number,
-            // required:true,
+            required:true,
         },
     
         size:{
             type:String,
-            // required:true
+            required:true
         },
         image: [
             {

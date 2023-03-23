@@ -1,0 +1,178 @@
+<%-include('../layouts/head.ejs')%>
+ <%-include('../layouts/userNav.ejs')%>
+  <section>
+    <link rel="stylesheet" href="/user/css/userAddress.css">
+
+    <div class="container my-5 py-5">
+
+      <!--Section: Design Block-->
+      <section>
+    
+        <div class="row">
+          <div class="col-md-8">
+           
+            <div class="card mb-4 accordion" id="accordionExample">
+              <div class="card body accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <div class="accordion-button collapsed text-uppercase text-font h4" type="button"
+                    data-mdb-toggle="collapse" data-mdb-target="#collapseOne" aria-expanded="false"
+                    aria-controls="collapseOne">
+                   Add User Address here/Update
+                  </div>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                  data-mdb-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <div class="form-outline d-flex">
+                      <input type="text" id="form1" class="form-control" />
+                      <label class="form-label" for="form1">Enter code</label>
+                    </div>
+                  </div>
+                </div>
+    
+    
+    
+              </div>
+            </div>
+     </div>
+    
+          <div class="col-md-8 mb-4">
+            <div class="card mb-4">
+              <div class="card-header py-3">
+                <h5 class="mb-0 text-font text-uppercase">Delivery address</h5>
+              </div>
+              <div class="card-body">
+                <form action="/postUserAddress"  method="post" >
+    
+                  <div class="row mb-4">
+                    <div class="col">
+                      <div class="form-outline">
+                        <input type="text" name="firstName" required id="form11Example1" class="form-control" />
+                        <label class="form-label"  for="form11Example1">First name</label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-outline">
+                        <input type="text" id="form11Example2" required name="lastname" class="form-control" />
+                        <label class="form-label" for="form11Example2">Last name</label>
+                      </div>
+                    </div>
+                  </div>
+    
+                  <!-- Text input -->
+                  <div class="form-outline mb-4">
+                    <input type="text" id="form11Example3" required name="house"  class="form-control" />
+                    <label class="form-label" for="form11Example3">House/Flate name</label>
+                  </div>
+
+
+                  <!-- <div class="form-outline mb-4">
+                    <input type="text" id="form11Example3" required name="email"  class="form-control" />
+                    <label class="form-label" for="form11Example3">Email</label>
+                  </div> -->
+
+
+
+                  <!-- Text input -->
+
+                  <div class="row mb-4">
+                    <div class="col">
+                      <div class="form-outline">
+                        <input type="text" id="form11Example1" required name="street" class="form-control" />
+                        <label class="form-label" for="form11Example1">Street name</label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-outline">
+                        <input type="text" id="form11Example2" required name="city" class="form-control" />
+                        <label class="form-label" for="form11Example2">City/Locality name</label>
+                      </div>
+                    </div>
+                  </div>
+    
+                  <!-- Text input -->
+                  <div class="row mb-4">
+                    <div class="col">
+                      <div class="form-outline">
+                        <input type="text" id="form11Example1" required name="district" class="form-control" />
+                        <label class="form-label" for="form11Example1">District name</label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-outline">
+                        <input type="text" id="form11Example2" required name="state" class="form-control" />
+                        <label class="form-label" for="form11Example2">State name</label>
+                      </div>
+                    </div>
+                  </div>
+    
+                  <!-- Email input -->
+                  <div class="form-outline mb-4">
+                    <input type="number" id="form11Example5" required name="pin" class="form-control" />
+                    <label class="form-label" for="form11Example5">PIN</label>
+                  </div>
+    
+                  <!-- Number input -->
+                  <div class="form-outline mb-4">
+                    <input type="number" id="form11Example6" req name="phone" class="form-control" />
+                    <label class="form-label" for="form11Example6">Mobile</label>
+                  </div>
+  
+              </div>
+    
+            </div>
+            <div class="text-center">
+          
+              <button type="submit"  class="btn button-order col-md-10">Submit Address</button>
+            </div>
+    
+          </div>
+    
+        </form>
+    
+    
+    
+    
+        </div>
+    
+      </section>
+      <!--Section: Design Block-->
+    
+    </div>
+  </section>
+  <%-include('../layouts/userFooter.ejs')%>
+  <%-include('../layouts/footer.ejs')%>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/jquery-3.0.0.min.js"></script>
+  <script src="js/plugin.js"></script>
+  <!-- sidebar -->
+  <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="js/custom.js"></script>
+  <!-- javascript -->
+  <script src="js/owl.carousel.js"></script>
+  <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $(".fancybox").fancybox({
+        openEffect: "none",
+        closeEffect: "none",
+      });
+    });
+    $("#myCarousel").carousel({
+      interval: false,
+    });
+  </script>
+
+  <script>
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+      document.getElementById("main").style.marginLeft = "0";
+    }
+  </script>

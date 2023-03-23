@@ -1,0 +1,67 @@
+<%- include('../layouts/adminpartial.ejs') %>
+<section class="text-center text-lg-start">
+  <style>
+    .cascading-right {
+      margin-right: -50px;
+    }
+
+    @media (max-width: 991.98px) {
+      .cascading-right {
+        margin-right: 0;
+      }
+    }
+  </style>
+
+  <!-- Jumbotron -->
+  <div class="container py-4 mt-5 ">
+    <div class="row g-0 align-items-center d-flex justify-content-center">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="card cascading-right" style="
+            background: hsla(0, 0%, 100%, 0.55);
+            backdrop-filter: blur(30px);
+            ">
+          <div class="card-body p-5 shadow-5 text-center ">
+            <h2 class="fw-bold mb-5">Edit_Coupon</h2>
+            <form action="/admin/editCoupon/<%data._id%> " method="post"  enctype="multipart/form-data" > 
+
+              <!-- 2 column grid layout with text inputs for the first and last names -->
+              <div class="row">
+                <div class="form-outline mb-4">
+                  <div class="form-outline">
+                    <input type="name" id="coupon" name="coupon" placeholder="coupon"  class="form-control" />
+                    <label class="form-label" for="coupon"></label><br>
+                  </div>
+                </div>
+                
+            
+                <div class="form-outline mb-4">
+                    <div class="form-outline">
+                      <input type="number" id="discount" name="discount" placeholder="discount"  class="form-control" />
+                      <label class="form-label" for="discount"></label><br>
+                    </div>
+                  </div>
+               
+          
+                
+                <div class="form-outline mb-4">
+                  <div class="form-outline">
+                    <input type="date" id="expirydate" name="expirydate" placeholder="expirydate"  class="form-control" />
+                    <label class="form-label" for="expirydate"></label><br>
+                  </div>
+                </div>
+              
+                
+            </div>
+
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary btn-block mb-4">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Jumbotron -->
+</section>

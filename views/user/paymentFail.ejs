@@ -1,0 +1,100 @@
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Failed</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-xEsr+v1V7Kj5o5+j2LR5aOWBgH0KjJdO6U/7VUwvE1L7JjK9Xu5+vQ75N3FqZ2QdZS0upbOzgIjKfJUtR/qng=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .payment-failed {
+            background-color: #fff;
+            margin-top: 100px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .payment-failed h2 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #dc3545;
+            margin-bottom: 30px;
+        }
+
+        .payment-failed p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .payment-failed a {
+            background-color: #fc031c;
+            color: #fff;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+            display: inline-block;
+        }
+
+        .payment-failed a:hover {
+            background-color: #fc011a;
+        }
+
+        @media (max-width: 576px) {
+            .payment-failed {
+                margin-top: 50px;
+            }
+
+            .payment-failed h2 {
+                font-size: 24px;
+            }
+
+            .payment-failed p {
+                font-size: 16px;
+            }
+
+            .payment-failed a {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="payment-failed text-center">
+                    <i class="fas fa-times-circle fa-5x mb-4" style="color: #b70012;"></i>
+                    <h2>Payment Failed</h2>
+                    <p>We're sorry, your payment could not be processed at this time.</p>
+                    <a href="/" class="mt-3">Go to Home Page</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+       <!-- Bootstrap JS -->
+       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+       crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+       crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+       crossorigin="anonymous"></script>
+
+

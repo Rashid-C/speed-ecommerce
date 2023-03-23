@@ -1,0 +1,71 @@
+<%- include('../layouts/adminpartial.ejs') %>
+  <!-- Table Start -->
+ 
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
+  <div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">Users</h6>
+                <div class="table-responsive">
+                    <table id="tableform" class="table">
+                        <thead>
+                           
+                            <tr>
+                                <th scope="col">SI No</th>
+                                <th scope="col">User Name</th>
+                                <th scope="col">Image</th>
+
+                                <th scope="col">Email</th>
+                                <th scope="col">Options</th>
+                                
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% users.forEach((data,index)=>{ %>
+                            <tr>
+                                
+                                <td><%= index+1%></td>
+                                <td><%= data.username %></td>
+                                <td><img height="50rem" width="50rem" src="<%=data.profileImage%>" alt="Image Not Added From the User Side"></td>
+                                
+                                <td><%= data.email %></td>
+                                <td>
+                                    <%if(!data.isBlocked){ %>
+                                    <a href="/admin/blockUser/<%=data._id%>">
+                                    <button type="button" class="btn btn-danger" >Block</button></a>
+                                    <%}else{%>
+                                        <a href="/admin/unBlockUser/<%=data._id%>">
+                                        <button type="button" class="btn btn-success" >Unblock</button></a>
+                                       <%}%>
+                                    </td>
+                            
+                                <!-- modal -->
+              
+                                <%})%>     <!-- modal end -->
+                            </tr>
+                 
+                           
+                        </tbody>
+                    </table>
+                    
+                </div>          
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+    $('#tableform').DataTable();
+});
+</script>
+<!-- Table End -->

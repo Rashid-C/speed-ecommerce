@@ -33,7 +33,11 @@
                                 <td><%= data.category %></td>
                                 <td><%= data.price %></td>
                                 <td><%= data.size %></td>
-                                <td></td>
+                                <td> 
+                                  <% data.image.forEach((image)=>{ %>
+                                    <img height="50rem" width="50rem" src="<%= image.url %>" alt="">
+                                    <%})%>
+                                 </td>
                                 <td>
                                     <%if(data.isDeleted){ %>
                                         <a href="/admin/restoreProduct/<%= data._id %>">
@@ -50,7 +54,7 @@
                                            </button>
                                            <%}%>
                                 </td>
-                                <!-- modal -->
+       <!----------------------------------------- modal ----------------------------------------------------------------------->
                                 <div
                                 class="modal fade"
                                 id="exampleModal-<%= data._id %>"
@@ -92,14 +96,14 @@
                                   </div>
                                 </div>
                               </div>
-                                      <!-- modal end -->
+          <!------------------------------------------------- modal end------------------------------------------->
                             </tr>
                  
                             <%})%>
                         </tbody>
                     </table>
                     <div class="text-center mb-2">
-                        <a href="/admin/addProduct" class="btn btn-secondary">Add Product</a>
+                        <a href="/admin/addProduct" class="btn btn-success">Add Product</a>
                         </div>
                 </div>          
             </div>

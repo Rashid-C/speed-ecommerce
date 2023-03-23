@@ -1,49 +1,28 @@
 function validatingForm(form){
   
-    userName =document.getElementById("username");
+    username =document.getElementById("name1");
     email =document.getElementById("email");
     password =document.getElementById("password");
-    conformPassword =document.getElementById("confirmpassword");
-
-    
-
-
-    if(userName.value == ""){
-        document.getElementById('userNameError').innerHTML="please enter your Name..! "
-        userName.focus();
+    conformPassword =document.getElementById("conformpassword");
+       
+     if(name1.value == ""){
+        document.getElementById("userNameError").innerHTML="Please Enter Your Name..! "
+        name1.focus();
         return false;
     }
      var regexname = /^[a-zA-Z\-]+$/ ;
     
-     if(regexname.test(userName.value)=== false){
-      document.getElementById('userNameError').innerHTML="Name should not contain  special characters..! "
-      userName.focus();
+     if(regexname.test(name1.value)=== false){
+      document.getElementById('userNameError').innerHTML="Name Should Not Contain Numbers & Special Characters..! "
+      name1.focus();
       return false;
      }
-    
+    //  ------------------------------------------------------------------------------------------------------------
 
+  
+    //  ------------------------------------------------------------------------------------------------
 
-
-
-
-     if(conformPassword.value == "" ){
-        document.getElementById('conformPasswordrError').innerHTML="please enter your Conform password number..! "
-        conformPassword.focus();
-        return false;
-
-    }
-
-    var regexconfpass =  /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-     if(regexconfpass.test(conformPassword.value)=== false ||conformPassword !== password){
-      document.getElementById('phoneNumberError').innerHTML="conform password must be same as password "
-        conformPassword.focus();
-        return false;
-     }
-
-
-
-
-     if(email.value == ""){
+     if(email.value === ""){
         document.getElementById('emailError').innerHTML="please enter your mail id..! "
         email.focus();
         return false;
@@ -55,6 +34,7 @@ function validatingForm(form){
         email.focus();
         return false;
     }
+    // ----------------------------------------------------------------------------------------------------------
 
    var regexpass =  /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
    if(regexpass.test(password.value)=== false){
@@ -68,6 +48,26 @@ function validatingForm(form){
         password.focus();
         return false;
     }
-    return true;
+    
+
+
+// -----------------------------------------------------------------------------------------------------------------
+
+if(conformpassword.value == "" ){
+    document.getElementById("conformPasswordError").innerHTML="please enter your Conform password number..! "
+    conformpassword.focus();
+    return false;
 
 }
+
+var regexconfpass =  /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+ if(regexconfpass.test(conformpassword.value)=== false ){
+  document.getElementById("conformPasswordError").innerHTML="conform password must be same as password "
+  conformpassword.focus();
+    return false;
+ }
+ return true;
+
+
+}
+// ----------------------close--------------------------------------------

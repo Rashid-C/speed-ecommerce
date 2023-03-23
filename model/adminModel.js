@@ -14,4 +14,4 @@ const adminSchema=new schema(
 
 })
 const admindetails=mongoose.model("admindetails",adminSchema)
-module.exports=admindetails
+module.exports=admindetails  
