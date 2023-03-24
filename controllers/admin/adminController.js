@@ -71,7 +71,7 @@ exports.adminProduct = async (req, res) => {
 exports.addProduct = async (req, res) => {
   try {
     const Category = await category.find();
-    res.render("admin/addProduct", { Category });
+    res.render("admin/addproduct", { Category });
   } catch (error) {
     console.log(error);
   }
