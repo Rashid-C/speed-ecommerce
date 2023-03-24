@@ -135,7 +135,7 @@
                   <tfoot>
                     <tr class="order-total">
                       <th>Total</th>
-                      <th><input  hidden value="<%=sum%>" name="sum"  type="text" />
+                      <th><input hidden value="<%= sum %>" name="sum" type="text" />
                            <p id="sum">
                             <%=sum%>
                            </p>
@@ -147,9 +147,9 @@
                        
                       <th>
                       
-                         <button hx-post="/applyCoupon" hx-vals=".coupon-input" hx-target="#sum "  hx-swap="innerHTML">Apply Coupon</button>
-
-                         <!-- <div id="result"></div> -->
+                        <button  hx-post="/applyCoupon" hx-vals="#sum" hx-target="#sum"  hx-swap="innerHTML">Apply Coupon</button>
+                      
+                        
 
                       </th>
                       <th>

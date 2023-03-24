@@ -10,7 +10,7 @@
   <div class="container py-5">
     <div class="container mx-auto mt-4">
       <div class="row">
-        <%if(productData[0]._id){%>
+        <%if(productData[0]){%>
         
         <% productData.forEach((product)=>{ %>
         <div class="col-md-4">
@@ -25,7 +25,7 @@
             />
             <div class="card-body">
               <h5 class="card-title text-white"><%=product.productDetails.name%></h5>
-              <h6 class="card-subtitle mb-2 text-muted"><%=product.productDetails.description%></h6>
+              <!-- <h6 class="card-subtitle mb-2 text-muted"><%=product.productDetails.description%></h6> -->
               <h4 class="card-subtitle mb-2 text-muted"><strong><%=product.productDetails.price%></strong></h4>
               <p class="card-text"></p>
               <a href="/addToCart/<%=product.productItem%>" class="btn mr-2"

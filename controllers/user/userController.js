@@ -18,6 +18,7 @@ let moment = require("moment");
 
 const paypal = require("paypal-rest-sdk");
 const coupon = require("../../model/coupon");
+const { json } = require("body-parser");
 
 paypal.configure({
   mode: "sandbox", //sandbox or live
@@ -318,11 +319,9 @@ exports.addTocartUser = async (req, res) => {
       }
     } else {
       console.log("no user exist");
-      res.render("user/error404");
     }
   } catch (error) {
     console.log(error);
-    res.render("user/error404");
   }
 };
 // ------------------------------------------------------------------------------------------------------------------------------
@@ -1293,25 +1292,20 @@ exports.applyCoupon = async (req, res) => {
         let amount = product.reduce((accumulator, object) => {
           return accumulator + object.productPrice;
         }, 0);
-        let sum = amount - couponData.discount;
-        res.send(`${sum}`);
-        //  res.render("user/checkOut", {
-        //   user,
-        //   cartCount,
-        //   product,
-        //   userData,
-        //   sum,
-        // })
+        let sumAmount = amount - couponData.discount;
+        let sum = JSON.stringify(sumAmount)
+        res.send(`${sum }`);
+       
       } else {
         console.log("aggrgation moonji guysss");
-        // res.render("user/error404")
+      
       }
     }
   } else {
     // console.log("loooo ");
-    // res.render("user/error404")
+  
   }
-  // res.render("user/error404")
+
 
   // Send a response back to the client
 };

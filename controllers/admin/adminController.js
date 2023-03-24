@@ -156,7 +156,7 @@ exports.postEdit = (req, res) => {
       {
         name: name,
         brand: brand,
-        description: description, 
+        description: description,
         stock: stock,
         category: category,
         price: price,
@@ -458,9 +458,13 @@ exports.dashboard = async (req, res) => {
         },
       },
     ]);
-    const totalRevenue = orders[0].totalRevenue; 
 
-    let codNumber = cod.length; 
+    let totalRevenue = 0;
+    if (orders[0]) {
+      totalRevenue = orders[0].totalRevenue;
+    }
+
+    let codNumber = cod.length;
     let onlinePayment = online.length;
 
     let orderPending = await order.find({
@@ -522,8 +526,6 @@ exports.salesReportDay = async (req, res) => {
     ]);
 
     let totalAmount = result[0].totalAmount;
-
-   
 
     let data = await order.aggregate([
       {
@@ -592,19 +594,15 @@ exports.salesReportDay = async (req, res) => {
       y += 20;
     });
 
-
-
-
-
     res.setHeader(
       "Content-disposition",
       `attachment; filename=${"sales-reportPerDay.pdf"}`
     );
     res.setHeader("Content-type", "application/pdf");
-  
+
     // Pipe the generated PDF to the response object
     doc.pipe(res);
-  
+
     doc.end();
   } catch (error) {
     console.log(error);
@@ -712,17 +710,14 @@ exports.salesReportWeek = async (req, res) => {
       y += 20;
     });
 
-
-
     res.setHeader(
       "Content-disposition",
       `attachment; filename=${"sales-reportPerDay.pdf"}`
     );
     res.setHeader("Content-type", "application/pdf");
-  
+
     // Pipe the generated PDF to the response object
     doc.pipe(res);
-  
 
     doc.end();
   } catch (error) {
@@ -835,16 +830,14 @@ exports.salesReportMonth = async (req, res) => {
       y += 20;
     });
 
-
     res.setHeader(
       "Content-disposition",
       `attachment; filename=${"sales-reportPerDay.pdf"}`
     );
     res.setHeader("Content-type", "application/pdf");
-  
+
     // Pipe the generated PDF to the response object
     doc.pipe(res);
-  
 
     doc.end();
   } catch (error) {
@@ -953,16 +946,14 @@ exports.salesReportYear = async (req, res) => {
       y += 20;
     });
 
-
     res.setHeader(
       "Content-disposition",
       `attachment; filename=${"sales-reportPerDay.pdf"}`
     );
     res.setHeader("Content-type", "application/pdf");
-  
+
     // Pipe the generated PDF to the response object
     doc.pipe(res);
-  
 
     doc.end();
   } catch (error) {
