@@ -7,7 +7,6 @@
   <!-- body -->
   <body>
     <%-include('../layouts/userNav.ejs')%>
-  
 
     <div class="banner_section layout_padding">
       <div class="container">
@@ -40,15 +39,17 @@
                           >
                         </h1>
                         <p class="lorem_text">
-                          And our story began with an attempt to explore, those
+                          Our story began with an attempt to explore, those
                           simple pleasures of life! What a day it was, when we
                           did our first bike ride! Life opened up, with
                           beautiful sun rises and splendid weekends! Long rides
                           with wonderful chai breaks with fellow riders became
                           the norm of our lives! A fitter lifestyle had arrived.
                         </p>
-                        <a href="/shop"><button class="boynow_bt">Buy Now</button></a>
-                        
+                        <a href="/shop"
+                          ><button class="boynow_bt">Buy Now</button></a
+                        >
+
                         <button class="contact_bt">Contact Us</button>
                       </div>
                     </div>
@@ -185,67 +186,36 @@
     </div>
     <!-- about section end -->
     <!-- our section start -->
-    
+
     <!-- card start -->
 
     <div class="container mx-auto mt-4">
       <div class="row">
         <!--  -->
         <% productData.forEach((product)=>{ %> <%if(!product.isDeleted){%>
-          <a href="/productView/<%=product._id%>">
-        <div class="col-md-4">
-          <div class="card" style="width: 18rem">
-            <img
-              width="100% "
-              height="250rem "
-              src="<%=product.image[0]?.url%>"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title text-white"><%=product.name%></h5>
-              <h6 class="card-subtitle mb-2 text-muted"><%=product.brand%></h6>
-              <h6 class="card-subtitle mb-2 text-muted"><strong><%=product.price%></strong> </h6>
-              <!-- <p class="card-text"><%=product.description%></p> -->
-              <a href="/addToCart/<%=product._id%>" class="btn mr-2">
-                add to cart</a>
-                <!-- <button class="btn mr-2" onclick="addToCart">Add to Cart</button> -->
-              <a href="/productView/<%=product._id%>" class="btn"> Buy now</a>
-            </div>
-          </div>
-        </div>
-      </a>
+        <a href="/productView/<%=product._id%>">
+        <div class="col-md-4 col-sm-6 mb-4">
+  <div class="card">
+    <img height="250rem " src="<%=product.image[0]?.url%>" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><%=product.name%></h5>
+      <h6 class="card-subtitle mb-2 text-muted"><%=product.brand%></h6>
+      <h6 class="card-subtitle mb-2 text-muted"><strong><%=product.price%></strong></h6>
+      
+      <a href="/addToCart/<%=product._id%>" class="btn btn-primary ">Add to Cart</a>
+      <a href="/productView/<%=product._id%>" class="btn btn-secondary">Buy Now</a>
+    </div>
+  </div>
+</div>
+
+        </a>
         <%}%> <%})%>
         <!-- card end -->
-  
       </div>
     </div>
     <!-- our section end -->
 
     <%-include('../layouts/userFooter.ejs')%>
-    <!-- Javascript files-->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery-3.0.0.min.js"></script>
-    <script src="js/plugin.js"></script>
-    <!-- sidebar -->
-    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="js/custom.js"></script>
-    <!-- javascript -->
-    <script src="js/owl.carousel.js"></script>
-    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-    <script>
-      $(document).ready(function () {
-        $(".fancybox").fancybox({
-          openEffect: "none",
-          closeEffect: "none",
-        });
-      });
-      $("#myCarousel").carousel({
-        interval: false,
-      });
-    </script>
 
     <script>
       function openNav() {

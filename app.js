@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const db = require("./config/connection");
 const userRouter = require("./routes/userRouter");
 const adminRouter = require("./routes/adminRouter");
-
+require('dotenv').config()
 
 
  
@@ -39,6 +39,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", userRouter);
 app.use("/admin", adminRouter);
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log("http://localhost:3000");
 });

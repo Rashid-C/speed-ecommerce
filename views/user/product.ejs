@@ -1,162 +1,121 @@
 <%-include('../layouts/head.ejs')%> <%-include('../layouts/userNav.ejs')%>
-<script
-  src="https://unpkg.com/js-image-zoom@0.4.1/js-image-zoom.js"
-  type="application/javascript"
-></script>
+<script src="https://unpkg.com/js-image-zoom@0.4.1/js-image-zoom.js" type="application/javascript"></script>
+
 
 <main class="container">
   <link rel="stylesheet" href="/user/css/product.css" />
 
-  <div class="left-column me-5" id="img-container">
-    <img
-      height="400rem"
-      width="150rem"
-      data-image="red"
-      class="active"
-      src="<%=product.image[0].url%>"
-      alt="image not found"
-    />
+  
+  <div id="img-container" class="left-column me-5">
+    
+    <img   height="400rem" width="150rem" data-image="red" class="active" src="<%=product.image[0].url%>" alt="image not found">
+    <img  height="400rem" width="150rem" data-image="blue" src="<%=product.image[1].url%>" alt="image not found">
+    <img    height="400rem" width="150rem" data-image="black" src="<%=product.image[2].url%>" alt="image not found">
 
-    <img
-      height="400rem"
-      width="150rem"
-      data-image="blue"
-      src="<%=product.image[1].url%>"
-      alt="image not found"
-    />
-    <img
-      height="400rem"
-      width="150rem"
-      data-image="black"
-      src="<%=product.image[2].url%>"
-      alt="image not found"
-    />
   </div>
   <script>
     var options = {
-      width: 400,
-      zoomWidth: 500,
-      offset: { vertical: 0, horizontal: 10 },
+        width: 400,
+        zoomWidth: 500,
+        offset: {vertical: 0, horizontal: 10}
     };
     new ImageZoom(document.getElementById("img-container"), options);
-  </script>
+     
+    </script>
 
+  
+
+  
   <div class="right-column">
     <div class="product-description">
-      <span>Cycles</span>
       <h1><%=product.name%></h1>
       <p><%=product.description%></p>
     </div>
-
+    
     <div class="product-configuration">
       <div class="product-color">
-        <span>images</span>
-
+        <span>Images</span>
+        
         <div class="color-choose">
           <div>
             <input
-              data-image="red"
+            data-image="red"
               type="radio"
               id="red"
               name="color"
               value="red"
               checked
-            />
-            <label for="red"
+              />
+              <label for="red"
               ><img
                 src="<%=product.image[0].url%>"
                 height="60rem"
                 width="60rem"
                 alt="image not found"
-            /></label>
-          </div>
-          <div>
-            <input
-              data-image="blue"
-              type="radio"
-              id="blue"
-              name="color"
-              value="blue"
-            />
-            <label for="blue"
+                /></label>
+              </div>
+              <div>
+                <input
+                data-image="blue"
+                type="radio"
+                id="blue"
+                name="color"
+                value="blue"
+              />
+              <label for="blue"
               ><img
-                src="<%=product.image[1].url%>"
-                height="60rem"
-                width="60rem"
-                alt="image not found"
-            /></label>
-          </div>
-          <div>
+              src="<%=product.image[1].url%>"
+              height="60rem"
+              width="60rem"
+              alt="image not found"
+                /></label>
+              </div>
+              <div>
             <input
-              data-image="black"
-              type="radio"
-              id="black"
+            data-image="black"
+            type="radio"
+            id="black"
               name="color"
               value="black"
             />
             <label for="black"
-              ><img
-                src="<%=product.image[2].url%>"
-                height="60rem"
-                width="60rem"
-                alt="image not found"
+            ><img
+            src="<%=product.image[2].url%>"
+            height="60rem"
+            width="60rem"
+            alt="image not found"
             /></label>
           </div>
         </div>
       </div>
-
+      
       <div class="product-price">
-        <span>RS <%=product.price%></span>
+        <span>RS: <%=product.price%></span>
       </div>
     </div>
-
+    
     <div class="product-price">
       <a href="/postWishList/<%=product._id%>" class="cart-btn">Wish List</a>
-
+      
       <a href="/addToCart/<%=product._id%>" class="buy-btn">Buy Now</a>
     </div>
   </div>
 </main>
-<%-include('../layouts/userFooter.ejs')%> <%-include('../layouts/footer.ejs')%>
 
-<!-- Scripts -->
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
-  charset="utf-8"
-></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/user/js/product.js" charset="utf-8"></script>
-<!-- Javascript files-->
-<script src="js/jquery.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/jquery-3.0.0.min.js"></script>
-<script src="js/plugin.js"></script>
-<!-- sidebar -->
-<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="js/custom.js"></script>
-<!-- javascript -->
-<script src="js/owl.carousel.js"></script>
-<script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-<script>
-  $(document).ready(function () {
-    $(".fancybox").fancybox({
-      openEffect: "none",
-      closeEffect: "none",
-    });
-  });
-  $("#myCarousel").carousel({
-    interval: false,
-  });
-</script>
+
+<%-include('../layouts/userFooter.ejs')%> <%-include('../layouts/footer.ejs')%>
 
 <script>
   function openNav() {
     document.getElementById("mySidebar").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px";
   }
-
+  
   function closeNav() {
     document.getElementById("mySidebar").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
   }
 </script>
+

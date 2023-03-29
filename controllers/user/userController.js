@@ -18,14 +18,12 @@ let moment = require("moment");
 
 const paypal = require("paypal-rest-sdk");
 const coupon = require("../../model/coupon");
-const { json } = require("body-parser");
+require("dotenv").config();
 
 paypal.configure({
   mode: "sandbox", //sandbox or live
-  client_id:
-    "AdjBfPk2FzyAZwNovZbcNfV4oZY11r-EDRQiwt2vdTh7b7YOVP3GpCNj8Ap70Mjym9-WG-HebchXdH5R",
-  client_secret:
-    "EBARwS_kvk7BQXXvParxN2NNtJ1WLGNJO2ys3FAvV3YU6xzm75ldNQcTwVheXjdkLwXzwqblFRNrJzkO",
+  client_id: process.env.PAYPAL_CLIENT_ID,
+  client_secret: process.env.PAYPAL_CLIENT_SECRET,
 });
 
 // -------------------------------------------------------------------------------
@@ -68,7 +66,7 @@ exports.userPost = async (req, res) => {
   try {
     let { name, email, password } = req.body;
 
-    let mailDetails = {
+    const mailDetails = {
       from: "jsoanu@gmail.com",
       to: email,
       subject: "SPEED_CYCLE_SHOP",
@@ -882,12 +880,7 @@ exports.success = async (req, res) => {
         },
         { $set: { paymentStatus: "Paid", orderStatus: "Shipping" } }
       )
-      .then((data) => {
-        console.log(
-          data +
-            "rrrrkkkkkkkkkkkkkkkkkkkkkkkkkkkrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"
-        );
-      });
+      .then((data) => {});
   }
 
   // app.get("/success", (req, res) => {
@@ -932,12 +925,7 @@ exports.cancel = async (req, res) => {
           { userId: userData.id },
           { $set: { orderStatus: "Cancelled", paymentStatus: "Not Paid" } }
         )
-        .then((data) => {
-          console.log(
-            data +
-              "rrrrkkkkkkkkkkkkkkkkkkkkkkkkkkkrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"
-          );
-        });
+        .then((data) => {});
     }
 
     res.render("user/paymentFail", { user, userData });
@@ -1218,10 +1206,11 @@ exports.orderReview = async (req, res) => {
 exports.applyCoupon = async (req, res) => {
   let cartCount;
   const { couponDetails } = req.body;
+
   let user = req.session.user;
 
   // Do something with the coupon code
-  console.log(couponDetails + "hiiiii");
+
   if (couponDetails) {
     let couponData = await coupon.findOne({ couponName: couponDetails });
     let couponExpiryDate = new Date(couponData.expiryDate);
@@ -1236,7 +1225,7 @@ exports.applyCoupon = async (req, res) => {
 
     if (couponData == null || isExpired === false) {
       console.log("no coupon available");
-      // res.send([{err_msg:"no coupon available"}])
+      res.json({ err_msg: "no coupon available" });
     } else {
       let userData = await userDetails.findOne({ email: user });
 
@@ -1292,20 +1281,16 @@ exports.applyCoupon = async (req, res) => {
         let amount = product.reduce((accumulator, object) => {
           return accumulator + object.productPrice;
         }, 0);
-        let sumAmount = amount - couponData.discount;
-        let sum = JSON.stringify(sumAmount)
-        res.send(`${sum }`);
-       
+        let sum = amount - couponData.discount;
+
+        res.json({ sum });
       } else {
         console.log("aggrgation moonji guysss");
-      
       }
     }
   } else {
     // console.log("loooo ");
-  
   }
-
 
   // Send a response back to the client
 };

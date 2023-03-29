@@ -1,91 +1,46 @@
 <%-include('../layouts/head.ejs')%> <%-include('../layouts/userNav.ejs')%>
 <link rel="stylesheet" href="/user/css/cod.css" />
 
-
-  <div class="container my-3">
-    <div class="card">
-      <h5 class="card-header">
-        <img src="/img/logo.png" alt="sorry... logo disabled" width="160" />
-      </h5>
-      <div class="card-body">
-        <div class="card-title">
-          <div class="left">
-            <a href="/"><strong>SPEED CYCLES</strong></a>
-          </div>
-          <div class="right bg-primary text-dark" style="font-weight: bold">
-            <p><%=new Date().toLocaleDateString()%></p>
-          </div>
-     
+<div class="container my-3">
+  <div class="card">
+    <h5 class="card-header">
+      <img src="/img/logo.png" alt="sorry... logo disabled" width="160" />
+    </h5>
+    <div class="card-body">
+      <div class="card-title">
+        <div class="left">
+          <a href="/"><strong>SPEED CYCLES</strong></a>
         </div>
-        <!-- <script>
-          alert(Date.now());
-        </script> -->
-        <br />
-        <p class="card-text">
-          <!-- Contact number -->
-          <br />
-          Email : <%=userData.email%>
-        </p>
-        <p class="card-text">
-          <b>Name : </b> <%=userData.username%>
-          <br />
-          <b>Order Id :</b> 9O2KVK71
-          <br />
-          <!-- <b>Amount for ATM card pre-order :</b> 15000 FCFA -->
-        </p>
-        <p class="card-text text-success font-weight-bold">
-          <strong> Payment successful,</strong> <br /><strong>
-            Your cart will be available within 5 or maximum 12 days !!!
-          </strong>
-        </p>
-        <p class="card-text">
-          Thank you for your purchase, if you need anything or have any
-          questions about your product or payment then please let us know !!!
-        </p>
+        <div class="right bg-primary text-dark" style="font-weight: bold">
+          <p><%=new Date().toLocaleDateString()%></p>
+        </div>
       </div>
+
+      <br />
+      <p class="card-text">
+        <br />
+        Email : <%=userData.email%>
+      </p>
+      <p class="card-text">
+        <b>Name : </b> <%=userData.username%>
+        <br />
+        <b>Order Id :</b> 9O2KVK71
+        <br />
+      </p>
+      <p class="card-text text-success font-weight-bold">
+        <strong> Payment successful,</strong> <br /><strong>
+          Your cart will be available within 5 or maximum 12 days !!!
+        </strong>
+      </p>
+      <p class="card-text">
+        Thank you for your purchase, if you need anything or have any questions
+        about your product or payment then please let us know !!!
+      </p>
     </div>
   </div>
-  
-  <!-- <script
-    src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"
-  ></script>
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"
-  ></script>
-  <script
-    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"
-  ></script> -->
+</div>
+
 <%-include('../layouts/userFooter.ejs')%> <%-include('../layouts/footer.ejs')%>
-
-
-<script src="js/jquery.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/jquery-3.0.0.min.js"></script>
-<script src="js/plugin.js"></script>
-<!-- sidebar -->
-<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="js/custom.js"></script>
-<!-- javascript -->
-<script src="js/owl.carousel.js"></script>
-<script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-<script>
-  $(document).ready(function () {
-    $(".fancybox").fancybox({
-      openEffect: "none",
-      closeEffect: "none",
-    });
-  });
-  $("#myCarousel").carousel({
-    interval: false,
-  });
-</script>
 
 <script>
   function openNav() {
@@ -98,4 +53,3 @@
     document.getElementById("main").style.marginLeft = "0";
   }
 </script>
-

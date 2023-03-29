@@ -1,127 +1,56 @@
-<link rel="stylesheet" href="/user/css/orderReview.css">
+<link rel="stylesheet" href="/user/css/orderReview.css" />
 <div>
-    <a href="/"><img src="/img/logo.png" alt=""></a>
-  </div>
+  <a href="/"><img src="/img/logo.png" alt="" /></a>
+</div>
 <div class="container my-5 d-sm-flex justify-content-center">
-  
-    <div class="card px-2">
-        <div class="card-header bg-white">
-        
-            <div class="row px-3">
-                <div class="col">
-                    <h3 class="text-primary">Delivery Address:</h3>
-                    <h6><%=userData.primaryAddress.firstName%></h6>
-                    <h6><%=userData.primaryAddress.lastName%></h6>
-                    <h6><%=userData.primaryAddress.house%></h6>
-                    <h6><%=userData.primaryAddress.street%></h6>
-                    <h6><%=userData.primaryAddress.city%></h6>
-                    <h6><%=userData.primaryAddress.district%></h6>
-                    <h6><%=userData.primaryAddress.state%></h6>
-                    <h6><%=userData.primaryAddress.pin%></h6>
-                    <h6><%=userData.primaryAddress.mobile%></h6>
-                </div>
-            </div>
-          <div class="row justify-content-between">
-          
-            <div class="col">
-                <a href="/#">
-                <p class="text-muted"> Need Help!..Contact us.  <span class="font-weight-bold text-dark">7356958972</span> </p></a>
-            </div>
-                <div class="flex-col my-auto">
-                    <h6 class="ml-auto mr-3">
-                        <button class="btn btn-primary" onclick="downloadInvoice()">Download</button>
-                       
-                    </h6>
-                </div>
-                
-          </div>
+  <div class="card px-2">
+    <div class="card-header bg-white">
+      <div class="row px-3">
+        <div class="col">
+          <h3 class="text-primary">Delivery Address:</h3>
+          <h6><%=userData.primaryAddress.firstName%></h6>
+          <h6><%=userData.primaryAddress.lastName%></h6>
+          <h6><%=userData.primaryAddress.house%></h6>
+          <h6><%=userData.primaryAddress.street%></h6>
+          <h6><%=userData.primaryAddress.city%></h6>
+          <h6><%=userData.primaryAddress.district%></h6>
+          <h6><%=userData.primaryAddress.state%></h6>
+          <h6><%=userData.primaryAddress.pin%></h6>
+          <h6><%=userData.primaryAddress.mobile%></h6>
         </div>
-       
-        <div class="row px-3">
-           
-            <div class="col">
-                <ul id="progressbar" >
-                    <li class="step0 active " id="step1">PLACED</li>
-                    <li class="step0 active text-center" id="step2">SHIPPED</li>
-                    <li class="step0  text-muted text-right" id="step3">DELIVERED</li>
-                </ul>
-            </div>
-     
+      </div>
+      <div class="row justify-content-between">
+        <div class="col">
+          <a href="/#">
+            <p class="text-muted">
+              Need Help!..Contact us.
+              <span class="font-weight-bold text-dark">7356958972</span>
+            </p></a
+          >
         </div>
-       
+        <div class="flex-col my-auto">
+          <h6 class="ml-auto mr-3">
+            <button class="btn btn-primary">Download</button>
+          </h6>
+        </div>
+      </div>
     </div>
 
+    <div class="row px-3">
+      <div class="col">
+        <ul id="progressbar">
+          <li class="step0 active" id="step1">PLACED</li>
+          <li class="step0 active text-center" id="step2">SHIPPED</li>
+          <li class="step0 text-muted text-right" id="step3">DELIVERED</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 
-<script>
-    function downloadInvoice() {
-
-var data = {
-    //"documentTitle": "RECEIPT", //Defaults to INVOICE
-    "currency": "INR",
-    "taxNotation": "vat", //or gst
-    "marginTop": 25,
-    "marginRight": 25,
-    "marginLeft": 25,
-    "marginBottom": 25,
-    "logo": "https://www.easyinvoice.cloud/img/logo.png", //or base64
-    //"logoExtension": "png", //only when logo is base64
-    "sender": {
-        "company": "Sample Corp",
-        "address": "Sample Street 123",
-        "zip": "1234 AB",
-        "city": "Sampletown",
-        "country": "Samplecountry"
-        //"custom1": "custom value 1",
-        //"custom2": "custom value 2",
-        //"custom3": "custom value 3"
-    },
-    "client": {
-        "company": "Client Corp",
-        "address": "Clientstreet 456",
-        "zip": "4567 CD",
-        "city": "Clientcity",
-        "country": "Clientcountry"
-        //"custom1": "custom value 1",
-        //"custom2": "custom value 2",
-        //"custom3": "custom value 3"
-    },
-    "invoiceNumber": "2020.0001",
-    "invoiceDate": "05-01-2020",
-    "products": [
-        {
-            "quantity": "2",
-            "description": "Test1",
-            "tax": 6,
-            "price": 33.87
-        },
-        {
-            "quantity": "4",
-            "description": "Test2",
-            "tax": 21,
-            "price": 10.45
-        }
-    ],
-    "bottomNotice": "Kindly pay your invoice within 15 days."
-};
-easyinvoice.createInvoice(data, function (result) {
-    // The response will contain a base64 encoded PDF file
-    console.log( result.pdf);
-    easyinvoice.download(invoice.pdf)
-
-    // Now this result can be used to save, download or render your invoice
-    // Please review the documentation below on how to do this
-});
-        
-    }
-</script>
-<!-- sdn for invoice -->
-<script src="https://unpkg.com/easyinvoice/dist/easyinvoice.min.js"></script>
-<!-- close cdn for invoice-->
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+  crossorigin="anonymous"
+/>

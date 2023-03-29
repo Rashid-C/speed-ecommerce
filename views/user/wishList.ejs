@@ -1,20 +1,15 @@
-<%-include('../layouts/head.ejs')%>
- <%-include('../layouts/userNav.ejs')%>
+<%-include('../layouts/head.ejs')%> <%-include('../layouts/userNav.ejs')%>
 <section class="h-100 gradient-custom">
-  <link rel="stylesheet" href="/styles/wishnew.css">
-  <!-- 0000000000000000000000000000000000000000000000000 -->
+  <link rel="stylesheet" href="/styles/wishnew.css" />
   <h4 class="checkout-title ml-5 pl-5 pt-3"><strong>YOUR WISHLIST</strong></h4>
-<!-- ------------------------------------------------ -->
+  <!-- ------------------------------------------------ -->
 
   <link rel="stylesheet" href="/user/css/card.css" />
   <div class="container py-5">
     <div class="container mx-auto mt-4">
       <div class="row">
-        <%if(productData[0]){%>
-        
-        <% productData.forEach((product)=>{ %>
+        <%if(productData[0]){%> <% productData.forEach((product)=>{ %>
         <div class="col-md-4">
-          
           <div class="card" style="width: 18rem">
             <img
               width="100% "
@@ -24,60 +19,38 @@
               alt="..."
             />
             <div class="card-body">
-              <h5 class="card-title text-white"><%=product.productDetails.name%></h5>
-              <!-- <h6 class="card-subtitle mb-2 text-muted"><%=product.productDetails.description%></h6> -->
-              <h4 class="card-subtitle mb-2 text-muted"><strong><%=product.productDetails.price%></strong></h4>
+              <h5 class="card-title text-white">
+                <%=product.productDetails.name%>
+              </h5>
+              <h4 class="card-subtitle mb-2 text-muted">
+                <strong><%=product.productDetails.price%></strong>
+              </h4>
               <p class="card-text"></p>
-              <a href="/addToCart/<%=product.productItem%>" class="btn mr-2"
-                > add to cart</a
+              <a href="/addToCart/<%=product.productItem%>" class="btn mr-2">
+                add to cart</a
               >
-              <a href="/removeWishList/<%=product.productItem%>" class="btn"> Remove</a>
+              <a href="/removeWishList/<%=product.productItem%>" class="btn">
+                Remove</a
+              >
             </div>
-            
           </div>
-          
         </div>
-        <%})%>
-        <%}else{%>
-          <h1 class="text-danger font-weight-bold">NO WISHLIST AVAILABLE HERE</h1>
-          <%}%>
+        <%})%> <%}else{%>
+        <div style="text-align: center" class="container">
+          <h1 class="text-danger font-weight-bold mt-5">
+            NO WISHLIST AVAILABLE HERE
+          </h1>
+        </div>
+        <%}%>
       </div>
     </div>
   </div>
 </section>
-<%-include('../layouts/userFooter.ejs')%>
-      <%-include('../layouts/footer.ejs')%>
-      <script src="js/jquery.min.js"></script>
-      <script src="js/popper.min.js"></script>
-      <script src="js/bootstrap.bundle.min.js"></script>
-      <script src="js/jquery-3.0.0.min.js"></script>
-      <script src="js/plugin.js"></script>
-      <!-- sidebar -->
-      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-      <script src="js/custom.js"></script>
-      <!-- javascript -->
-      <script src="js/owl.carousel.js"></script>
-      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-      <script>
-        $(document).ready(function () {
-          $(".fancybox").fancybox({
-            openEffect: "none",
-            closeEffect: "none",
-          });
-        });
-        $("#myCarousel").carousel({
-          interval: false,
-        });
-      </script>
-  
-      <script>
-        function openNav() {
-          document.getElementById("mySidebar").style.width = "250px";
-          document.getElementById("main").style.marginLeft = "250px";
-        }
-  
-        function closeNav() {
-          document.getElementById("mySidebar").style.width = "0";
-          document.getElementById("main").style.marginLeft = "0";
-        }
-      </script>
+<%-include('../layouts/userFooter.ejs')%> <%-include('../layouts/footer.ejs')%>
+
+<script>
+  function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+  }
+</script>

@@ -1,29 +1,25 @@
-
-
 <body>
-    <link rel="stylesheet" href="/user/css/resetPassword.css">
-    <div class="caixa__login">
-        <h2>RESET PASSWORD</h2>
-        <form action="/afterForgotOtp" method="post">
-           
-            <div class="caixa__login-input">
-                <input type="password" name="newPassword" required />
-                <label>New Password</label>
-            </div>
-            <div class="caixa__login-input">
-                <input type="password" name="conformNewPassword" required />
-                <label>Conform Password</label>
-                <input type="email" name="email" value="<%=email%>" hidden>
-            </div>
-           
-            <button type="submit" class="bg-transparent">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                SUBMIT
-            </button>
-        </form>
-    </div>
-</body>
+  <link rel="stylesheet" href="/user/css/resetPassword.css" />
+  <div class="caixa__login">
+    <h2>RESET PASSWORD</h2>
+    <form action="/afterForgotOtp" method="post">
+      <div class="caixa__login-input">
+        <input type="password" name="newPassword" required />
+        <label>New Password</label>
+      </div>
+      <div class="caixa__login-input">
+        <input type="password" name="conformNewPassword" required />
+        <label>Conform Password</label>
+        <input type="email" name="email" value="<%=email%>" hidden />
+      </div>
 
+      <button type="submit" class="bg-transparent">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        SUBMIT
+      </button>
+    </form>
+  </div>
+</body>

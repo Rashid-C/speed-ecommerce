@@ -28,7 +28,7 @@
                   <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
                     <img  width="100%" src="<%=product.productDetails.image[0].url%>"
                       class="w-100" alt="Blue Jeans Jacket" />
-                    <a href="#">
+                    <a href="/removeCart/<%=product.productDetails._id %>" id="Remove<%=product.productDetails._id%>" ><button><ion-icon name="trash-outline"></ion-icon></button>
                       <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
                     </a>
                   </div>
@@ -36,20 +36,20 @@
                 </div>
                 <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
                   <!-- Data -->
-                  <p><strong><%=product.productDetails.price %></strong></p>
-                  <p> <%=product.productDetails.brand %></p>
+                  <h4><strong><%=product.productDetails.price %></strong></h4>
+                  <h5> <%=product.productDetails.brand %></h5>
                    </div>
                 <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                  <a href="/removeCart/<%=product.productDetails._id %>" id="Remove<%=product.productDetails._id%>" class="btn btn-danger">Remove</a>
+                  <!-- <a href="/removeCart/<%=product.productDetails._id %>" id="Remove<%=product.productDetails._id%>" class="btn btn-danger">Remove</a> -->
                   <!-- Quantity -->
                   <div class="d-flex mb-4" style="max-width: 300px">
                     
   
                     <div class="form-outline">
                        <!-- Button min-->
-                      <button class="btn btn-info mr-3"  onclick="changeQuantity('<%=product._id%>','<%=product.productDetails._id%>',-1)">-</button>
+                      <button class="  mr-3"  onclick="changeQuantity('<%=product._id%>','<%=product.productDetails._id%>',-1)"><ion-icon name="remove-circle-outline"></ion-icon></button>
                           <p class="Quantity" id="<%=product.productDetails._id%>"><%=product.quantity%></p>
-                      <button class="btn btn-info mr-3" onclick="changeQuantity('<%=product._id%>','<%=product.productDetails._id%>',1)">+</button>
+                      <button class="  mr-3" onclick="changeQuantity('<%=product._id%>','<%=product.productDetails._id%>',1)"><ion-icon name="add-circle-outline"></ion-icon></button>
                       <!-- Button max-->
                       
                       <label class="form-label" for="form1">Quantity</label>
@@ -114,21 +114,7 @@
  
   <%-include('../layouts/userFooter.ejs')%>
   <%-include('../layouts/footer.ejs')%>
-  <!-- Ajax -->
  
-   <!-- Javascript files-->
-   <script src="js/jquery.min.js"></script>
-   <script src="js/popper.min.js"></script>
-   <script src="js/bootstrap.bundle.min.js"></script>
-   <script src="js/jquery-3.0.0.min.js"></script>
-   <script src="js/plugin.js"></script>
-   <!-- sidebar -->
-   <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-   <script src="js/custom.js"></script>
-   <!-- javascript -->
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-   <script src="js/owl.carousel.js"></script>
-   <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
    <script>
      $(document).ready(function () {
        $(".fancybox").fancybox({
@@ -156,12 +142,9 @@
    <script>
     function changeQuantity(cartId,proId,count) {
       const Qnuantity =  document.getElementById(proId).innerText
-      // alert(count)
       
-      // value ===Quandity
       if (Qnuantity == 1 && count == -1 ) {
         document.getElementById('Remove'+proId).click();
-        // alert(value)
       } else {
         
       const quantity = parseInt(document.getElementById(proId).innerHTML)

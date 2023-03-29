@@ -10,10 +10,6 @@ const { default: mongoose, ObjectId } = require("mongoose");
 const { countDocuments } = require("../../model/userModel");
 const PDFDocument = require("pdfkit");
 const fs = require("fs");
-const http = require("http");
-const path = require("path");
-const mime = require("mime");
-const { log } = require("console");
 const offer = require("../../model/offer");
 
 // ----------Admin-Login----------------------------------------------------------------------------------------
@@ -60,7 +56,7 @@ exports.adminVerification = (req, res) => {
 // -----------------------------------------------------------------------------------------
 exports.adminProduct = async (req, res) => {
   try {
-    let productData = await products.find();
+    const productData = await products.find();
 
     res.render("admin/product", { productData });
   } catch (error) {

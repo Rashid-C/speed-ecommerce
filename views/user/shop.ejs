@@ -10,17 +10,18 @@
 
 
    <!-- dropdown -->
- <div class="btn-group">
-  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Filters
-  </button>
-  <div class="dropdown-menu">
-    <%filterCategory.forEach((category)=>{%>
-    <a href="/filterView/<%=category.category%>" class="dropdown-item" href="#"><%=category.category%></a>
-    <%})%>
- 
+   <div class="btn-group">
+    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Filters
+    </button>
+    <div class="dropdown-menu">
+      <%filterCategory.forEach((category)=>{%>
+      <a href="/filterView/<%=category.category%>" class="dropdown-item" href="#"><%=category.category%></a>
+      <%})%>
+   
+    </div>
   </div>
-</div>
+
 
  <!-- dropdown end -->
  
@@ -34,28 +35,22 @@
        <%if(!product.isDeleted){%>
         <a href="/productView/<%=product._id%>">
 
-     <div class="col-md-4 mt-5 pt-5 ">
-       <div class="card" style="width: 18rem">
-         <img
-         width="100% "
-         height="250rem "
-           src="<%=product.image[0].url%>"
-           class="card-img-top"
-           alt="..."
-         />
-         <div class="card-body">
-           <h5 class="card-title text-white"><%=product.name%></h5>
-           <h6 class="card-subtitle mb-2 text-muted"><%=product.brand%></h6>
-           <h5 class="card-title text-white"><%=product.category%></h5>
-           <h6 class="card-subtitle mb-2 text-muted"><strong><%=product.price%></strong></h6>
-         
-           <a href="/addToCart/<%=product._id%>" class="btn mr-2"
-             > add to cart</a
-           >
-           <a href="/productView/<%=product._id%>" class="btn"> Buy now</a>
-         </div>
-       </div>
-     </div>
+          <div class="col-md-4 mt-5 pt-5">
+            <div class="card">
+              <img height="250rem " src="<%=product.image[0].url%>" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title text-white"><%=product.name%></h5>
+                <h6 class="card-subtitle mb-2 text-muted"><%=product.brand%></h6>
+                <h5 class="card-title text-white"><%=product.category%></h5>
+                <h6 class="card-subtitle mb-2 text-muted"><strong><%=product.price%></strong></h6>
+                <div class="d-flex justify-content-center">
+                  <a href="/addToCart/<%=product._id%>" class="btn btn-primary btn-sm ">Add to Cart</a>
+                  <a href="/productView/<%=product._id%>" class="btn btn-secondary btn-sm">Buy Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
     </a>
 
     
@@ -70,29 +65,7 @@
    <!-- card end -->
    <%-include('../layouts/userFooter.ejs')%>
       <%-include('../layouts/footer.ejs')%>
-       <!-- Javascript files-->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery-3.0.0.min.js"></script>
-    <script src="js/plugin.js"></script>
-    <!-- sidebar -->
-    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="js/custom.js"></script>
-    <!-- javascript -->
-    <script src="js/owl.carousel.js"></script>
-    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-    <script>
-      $(document).ready(function () {
-        $(".fancybox").fancybox({
-          openEffect: "none",
-          closeEffect: "none",
-        });
-      });
-      $("#myCarousel").carousel({
-        interval: false,
-      });
-    </script>
+      
 
     <script>
       function openNav() {
@@ -105,3 +78,7 @@
         document.getElementById("main").style.marginLeft = "0";
       }
     </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    

@@ -1,45 +1,16 @@
 <%-include('../layouts/head.ejs')%> <%-include('../layouts/userNav.ejs')%>
 <script src="https://unpkg.com/htmx.org/dist/htmx.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 
-<script>
-  document.addEventListener('dataReceived', function (event) {
-  const response = event.detail.response;
-  document.querySelector('#output').textContent = response.message;
-});
-
-</script>
-
-
-
-
-<!-- <link
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-  rel="stylesheet"
-  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-  crossorigin="anonymous"
-/> -->
-<!-- <script
-  src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-  crossorigin="anonymous"
-></script> -->
-
-<link rel="stylesheet" href="/user/css/css/font-awesome.min.css" />
-<link rel="stylesheet" href="/user/css/css/owl.carousel.css" />
 <link rel="stylesheet" href="/user/css/css/style.css" />
-<link rel="stylesheet" href="/user/css/css/animate.css" />
-<link
-  href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i"
-  rel="stylesheet"
-/>
-<link href="img/favicon.ico" rel="shortcut icon" />
 
 <div class="page-area cart-page spad">
   <div class="container">
+   
     <form
-     action='/validateChechout'
-     method="post"
+      action="/validateChechout"
+      method="post"
       id="checkoutPayment"
       class="checkout-form"
     >
@@ -49,7 +20,7 @@
 
           <!-- Radio button start -->
           <label class="checkout-title">
-           <h4> <strong>Choose Your Billing Address</strong></h4>
+            <h4><strong>Choose Your Billing Address</strong></h4>
           </label>
           <div class="form-check">
             <input
@@ -85,7 +56,7 @@
                 placeholder="House Name/Flate No:"
               />
 
-              <input type="email" name="email" placeholder="Email" />
+              <!-- <input type="email" name="email" placeholder="Email" /> -->
 
               <input type="text" name="street" placeholder="Street" />
               <input type="text" name="city" placeholder="City" />
@@ -99,7 +70,8 @@
           <p class="text-danger text-uppercase fs-1 fw-bold"><%= err_msg %></p>
           <% } %>
         </div>
-        <div class="col-lg-6">
+       
+        <div class="col-lg-6 mt-5">
           <div class="order-card">
             <div class="order-details">
               <div class="od-warp">
@@ -135,31 +107,45 @@
                   <tfoot>
                     <tr class="order-total">
                       <th>Total</th>
-                      <th><input hidden value="<%= sum %>" name="sum" type="text" />
-                           <p id="sum">
-                            <%=sum%>
-                           </p>
+                      <th>
+                        <input
+                          readonly
+                          value="<%= sum %>"
+                          name="sum"
+                          id="sum"
+                          type="text"
+                        />
+                       
                       </th>
-                         
                     </tr>
 
-                      <tr>
+                    <tr>
+                      <th>
+                        <button type="button" onclick="changeCoupon()"> Apply Coupon</button>
                        
-                      <th>
-                      
-                        <button  hx-post="/applyCoupon" hx-vals="#sum" hx-target="#sum"  hx-swap="innerHTML">Apply Coupon</button>
-                      
-                        
-
+                        <!-- <button onclick="changeCoupon('<%=sum%>')"
+                          hx-post="/applyCoupon"
+                          hx-vals="#sum"
+                          hx-target="#sum"
+                          hx-swap="innerHTML"
+                        >
+                          Apply Coupon
+                        </button> -->
                       </th>
                       <th>
-                      
                         <div class="input-group">
-                          <input type="text" name="couponDetails" id="couponInput" class="form-control" placeholder="Enter your Coupon"  >
-                        
+                          <input
+                            type="text"
+                            name="couponDetails"
+                            id="couponInput"
+                            class="form-control"
+                            placeholder="Enter your Coupon"
+                          />
                         </div>
+                        <p id="err" class="text-danger text-uppercase fs-1 fw-bold"></p>
                       </th>
-                   
+                    
+
                     </tr>
                   </tfoot>
                 </table>
@@ -168,19 +154,27 @@
               <div id="paymentmethod">
                 <div class="pm-item">
                   <input type="radio" name="payment" value="cod" />
-                  <img style="height: 2.5rem;width: 3.5rem;" src="/img/cod img 1.jpg" alt="">
+                  <img
+                    style="height: 2.5rem; width: 3.5rem"
+                    src="/img/cod img 1.jpg"
+                    alt=""
+                  />
                   <label for="two">Cash on delievery</label>
                 </div>
                 <div class="pm-item">
                   <input type="radio" name="payment" value="onlinePayment" />
-                  <img  style="height: 2.5rem;width: 3.5rem;" src="/img/cards/2.png" alt="">
+                  <img
+                    style="height: 2.5rem; width: 3.5rem"
+                    src="/img/cards/2.png"
+                    alt=""
+                  />
                   <label for="three">Online Payment</label>
                 </div>
               </div>
             </div>
-            <button type="submit"  class="site-btn btn-full">
-              Place Order
-            </button>
+            <button type="submit" class="site-btn btn-full">Place Order</button>
+     
+
             <% if(locals.err_msg) { %>
             <p class="text-danger text-uppercase fs-1 fw-bold">
               <%= err_msg %>
@@ -194,7 +188,6 @@
 </div>
 <!-- Page -->
 
-
 <script>
   function openNav() {
     document.getElementById("mySidebar").style.width = "250px";
@@ -206,8 +199,28 @@
     document.getElementById("main").style.marginLeft = "0";
   }
 </script>
- 
+<script>
+  function changeCoupon(){
 
-<!--====== Javascripts & Jquery ======-->
+    const couponDetails=document.getElementById('couponInput').value 
+  
+    $.ajax({
+      url:"/applyCoupon",
+      method:"post",
+      data:{
+        couponDetails
+      },
+      success:(res)=>{
+         if (res.sum) {
+          document.getElementById('sum').value = res.sum
+         }else{
+          document.getElementById('err').innerHTML = res.err_msg
+         }
+      }
+    })
+  }
+</script>
+
+
 
 <%-include('../layouts/userFooter.ejs')%> <%-include('../layouts/footer.ejs')%>

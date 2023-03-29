@@ -1,9 +1,9 @@
 <%- include('../layouts/adminpartial.ejs') %>
     <section>
         <div class="row container-fluid ">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                  <h5 style="background-color: blue;" class="card-title backgroundColor">TOTAL ORDERS</h5>
+            <div class="card p-3 mb-2 bg-secondary" style="width: 18rem;">
+                <div class="card-body p-3 mb-2 bg-info text-white">
+                  <h5 style="background-color: rgb(255, 0, 128);" class="card-title backgroundColor">TOTAL ORDERS</h5>
                  
                   <p class="card-text">
                     <%=totalOrder%>
@@ -12,24 +12,24 @@
                 </div>
               </div>
 
-              <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                  <h5 style="background-color: blue;" class="card-title">TOTAL CUSTOMERS</h5>
+              <div class="card p-3 mb-2 bg-secondary" style="width: 18rem;">
+                <div class="card-body p-3 mb-2 bg-info text-white">
+                  <h5 style="background-color: rgb(255, 0, 128);" class="card-title">TOTAL CUSTOMERS</h5>
                   <p class="card-text"><%=totalUser%></p>
                 </div>
               </div>
 
-              <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                  <h5 style="background-color: blue;" class="card-title">REVENUE</h5>
-                  <p class="card-text"><%=totalRevenue%>.</p>
+              <div class="card p-3 mb-2 bg-secondary" style="width: 18rem;">
+                <div class="card-body p-3 mb-2 bg-info text-white">
+                  <h5 style="background-color: rgb(255, 0, 128);" class="card-title">REVENUE</h5>
+                  <p class="card-text"><%=totalRevenue%></p>
                 </div>
               </div>
 
-              <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                  <h5 style="background-color: blue;" class="card-title">TOTAL PRODUCTS</h5>
-                  <p class="card-text"><%=totalProduct%>.</p>
+              <div class="card p-3 mb-2 bg-secondary" style="width: 18rem;">
+                <div class="card-body p-3 mb-2 bg-info text-white">
+                  <h5 style="background-color: rgb(255, 0, 128);" class="card-title">TOTAL PRODUCTS</h5>
+                  <p class="card-text"><%=totalProduct%></p>
                 </div>
               </div>
         
@@ -78,13 +78,13 @@
   
 
     <section>
-      <div class="row">
+      <div class="row ">
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 
 <div id="myPlot2" style="width:100%;max-width:700px"></div>
 
-<script>
+<script >
 var xArray = ["DELIVARY", "SHIPPING", "PENDING","CANCEL",  ];
 var yArray = <%-JSON.stringify(barChart)%>;
 

@@ -7,7 +7,6 @@
           <ol class="breadcrumb mb-0">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
             <li class="breadcrumb-item"><a href="#">User</a></li>
-            <!-- <li class="breadcrumb-item active" aria-current="page">User Profile</li> -->
           </ol>
         </nav>
       </div>
@@ -17,58 +16,73 @@
       <div class="col-lg-4">
         <div class="card mb-4">
           <div class="card-body text-center">
-            
-            <form action="/userProfile" method="post" enctype="multipart/form-data"> 
-              <img id="profileImage" style="height: 150px;width: 150px;border-radius: 50%;object-fit: cover;background: #dfdfdf;" src="<%=user.profileImage%>" alt="">
-            <label for="selectedImage">
-              Choose Image
-              <input id="selectedImage" type="file" name="image" placeholder="profileImage" hidden>
-            </label>
+            <form
+              action="/userProfile"
+              method="post"
+              enctype="multipart/form-data"
+            >
+              <img
+                id="profileImage"
+                style="
+                  height: 150px;
+                  width: 150px;
+                  border-radius: 50%;
+                  object-fit: cover;
+                  background: #dfdfdf;
+                "
+                src="<%=user.profileImage%>"
+                alt=""
+              />
+              <label for="selectedImage">
+                Choose Image
+                <input
+                  id="selectedImage"
+                  type="file"
+                  name="image"
+                  placeholder="profileImage"
+                  hidden
+                />
+              </label>
               <script>
-               const image=document.getElementById("profileImage"),
-               input=document.getElementById("selectedImage");
-               
-               input.addEventListener("change",()=>{
-                 image.src=URL.createObjectURL(input.files[0]);
-                 
-                })
-                </script>
-                <button class="btn btn-secondary" type="submit">Set</button>
-                </form>
+                const image = document.getElementById("profileImage"),
+                  input = document.getElementById("selectedImage");
 
+                input.addEventListener("change", () => {
+                  image.src = URL.createObjectURL(input.files[0]);
+                });
+              </script>
+              <button class="btn btn-secondary" type="submit">Set</button>
+            </form>
 
-
-           <!-- img test end -->
+            <!-- img test end -->
             <p class="text-muted mb-1"></p>
             <p class="text-muted mb-4"></p>
-            <div class="d-flex justify-content-center mb-2">
-             
-            </div>
+            <div class="d-flex justify-content-center mb-2"></div>
           </div>
         </div>
         <div class="card mb-4 mb-lg-0">
           <div class="card-body p-0">
             <%if(user.primaryAddress.firstName){%>
-              <a href="/userAddress"
+            <a href="/userAddress"
               ><button type="/userAddress" class="btn btn-primary">
                 change Address
               </button></a
             >
             <%}else{%>
-              <a href="/userAddress"
+            <a href="/userAddress"
               ><button type="/userAddress" class="btn btn-primary">
                 Add Address
               </button></a
             >
-           
-              <%}%>
-              <a href="/resetPassword"><button class="btn btn-warning">
-                Change Password
-              </button></a>
 
-              <a href="/error404"><button class="btn btn-danger">error404</button></a>
+            <%}%>
+            <a href="/resetPassword"
+              ><button class="btn btn-warning">Change Password</button></a
+            >
 
-   
+            <a href="/error404"
+              ><button class="btn btn-danger">error404</button></a
+            >
           </div>
         </div>
       </div>
@@ -93,9 +107,7 @@
               </div>
             </div>
             <hr />
-         
-            
-           
+
             <div class="row">
               <div class="col-sm-3">
                 <p class="mb-0">Address</p>
@@ -123,28 +135,6 @@
   </div>
 </section>
 <%-include('../layouts/userFooter.ejs')%> <%-include('../layouts/footer.ejs')%>
-<script src="js/jquery.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/jquery-3.0.0.min.js"></script>
-<script src="js/plugin.js"></script>
-<!-- sidebar -->
-<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="js/custom.js"></script>
-<!-- javascript -->
-<script src="js/owl.carousel.js"></script>
-<script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-<script>
-  $(document).ready(function () {
-    $(".fancybox").fancybox({
-      openEffect: "none",
-      closeEffect: "none",
-    });
-  });
-  $("#myCarousel").carousel({
-    interval: false,
-  });
-</script>
 
 <script>
   function openNav() {
