@@ -2,17 +2,29 @@
   <link rel="stylesheet" href="/user/css/resetPassword.css" />
   <div class="caixa__login">
     <h2>RESET PASSWORD</h2>
-    <form action="/afterForgotOtp" method="post">
+    <form
+      action="/afterForgotOtp"
+      method="post"
+      onsubmit="return afterforgotPass(this)"
+    >
       <div class="caixa__login-input">
-        <input type="password" name="newPassword" required />
+        <!--  -->
+        <input type="password" id="password" name="newPassword" />
+        <p id="PasswordError" class="text-danger"></p>
         <label>New Password</label>
       </div>
       <div class="caixa__login-input">
-        <input type="password" name="conformNewPassword" required />
+        <!--  -->
+        <input type="password" id="ConformPassword" name="conformNewPassword" />
+        <p id="ConformPasswordError" class="text-danger"></p>
         <label>Conform Password</label>
-        <input type="email" name="email" value="<%=email%>" hidden />
-      </div>
+        <%if(locals.err_msg){%>
+        <p><%=err_msg%></p>
 
+        <%}%>
+
+        <input type="email" name="email" value="<%=email%>" readonly hidden />
+      </div>
       <button type="submit" class="bg-transparent">
         <span></span>
         <span></span>
@@ -23,3 +35,38 @@
     </form>
   </div>
 </body>
+
+<script>
+  function afterforgotPass(form) {
+    pass = document.getElementById("password");
+    conPass = document.getElementById("ConformPassword");
+    if (pass.value == "") {
+      document.getElementById("PasswordError").innerHTML =
+        "Please Enter Your New Password Here...!";
+      pass.focus();
+      return false;
+    }
+    var regexPass = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    if (regexPass.test(pass.value) === false) {
+      document.getElementById("PasswordError").innerHTML =
+        "Password Should Be Standard Form";
+      pass.focus();
+      return false;
+    }
+    // -----------------------------------------------------------
+    if (conPass.value == "") {
+      document.getElementById("ConformPasswordError").innerHTML =
+        "Please Enter Your Conform Password Here...!";
+      conPass.focus();
+      return false;
+    }
+    var regexConPass = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    if (regexConPass.test(conPass.value) === false) {
+      document.getElementById("ConformPasswordError").innerHTML =
+        "Password Should Be Standard Form...!";
+      conPass.focus();
+      return false;
+    }
+    return true;
+  }
+</script>

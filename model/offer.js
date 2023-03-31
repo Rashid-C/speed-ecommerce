@@ -1,28 +1,27 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const schema = mongoose.Schema;
-const ObjectId = schema.ObjectId;
 
 const offerSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   description: {
     type: String,
-    required: true
+    required: true,
   },
   discount: {
     type: Number,
-    required: true
+    required: true,
   },
   startDate: {
     type: Date,
-    required: true
+    required: true,
   },
   endDate: {
     type: Date,
-    required: true
-  }
+    required: true,
+  },
 });
-const offer=mongoose.model('offer', offerSchema);
-module.exports = offer
+const offer = mongoose.model("offer", offerSchema);
+module.exports = offer;

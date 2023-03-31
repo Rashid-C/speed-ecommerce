@@ -1,5 +1,7 @@
 <%-include('../layouts/head.ejs')%>
  <%-include('../layouts/userNav.ejs')%>
+<script src="/js/userAddressValidation.js" defer></script>
+
   <section>
     <link rel="stylesheet" href="/user/css/userAddress.css">
 
@@ -39,30 +41,33 @@
           <div class="col-md-8 mb-4">
             <div class="card mb-4">
               <div class="card-header py-3">
-                <h5 class="mb-0 text-font text-uppercase">Delivery address</h5>
+                <h5 class="mb-0 text-font text-uppercase">Delivery Address</h5>
               </div>
               <div class="card-body">
-                <form action="/postUserAddress"  method="post" >
+                <form action="/postUserAddress"  method="post" onsubmit="return userAddressValidation(this) ">
     
                   <div class="row mb-4">
                     <div class="col">
                       <div class="form-outline">
-                        <input type="text" name="firstName" required id="form11Example1" class="form-control" />
-                        <label class="form-label"  for="form11Example1">First name</label>
+                        <input type="text" id="firstName" name="firstName" required placeholder="First Name" id="form11Example1" class="form-control" />
+                        <p id="Name_Error" class="text-danger"></p>
+                        <label class="form-label"  for="form11Example1">First Name</label>
                       </div>
                     </div>
                     <div class="col">
                       <div class="form-outline">
-                        <input type="text" id="form11Example2" required name="lastname" class="form-control" />
-                        <label class="form-label" for="form11Example2">Last name</label>
+                        <input type="text" id="lastName" id="form11Example2" required name="lastname" placeholder="Last Name" class="form-control" />
+                        <p id="Last_Name_Error" class="text-danger"></p>
+                        <label class="form-label" for="form11Example2">Last Name</label>
                       </div>
                     </div>
                   </div>
     
                   <!-- Text input -->
                   <div class="form-outline mb-4">
-                    <input type="text" id="form11Example3" required name="house"  class="form-control" />
-                    <label class="form-label" for="form11Example3">House/Flate name</label>
+                    <input type="text" id="houseName"  id="form11Example3" required name="house" placeholder="House/Flate Name" class="form-control" />
+                    <p id="House_Name_Error" class="text-danger"></p>
+                    <label class="form-label" for="form11Example3">House/Flate Name</label>
                   </div>
 
 
@@ -73,14 +78,16 @@
                   <div class="row mb-4">
                     <div class="col">
                       <div class="form-outline">
-                        <input type="text" id="form11Example1" required name="street" class="form-control" />
-                        <label class="form-label" for="form11Example1">Street name</label>
+                        <input type="text" id="streetName" id="form11Example1" placeholder="Street Name" required name="street" class="form-control" />
+                        <p id="Street_Name_Error" class="text-danger"></p>
+                        <label class="form-label" for="form11Example1">Street Name</label>
                       </div>
                     </div>
                     <div class="col">
                       <div class="form-outline">
-                        <input type="text" id="form11Example2" required name="city" class="form-control" />
-                        <label class="form-label" for="form11Example2">City/Locality name</label>
+                        <input  type="text"  id="cityName" required name="city" placeholder="City/Locality Name" class="form-control" />
+                        <p id="City_Name_Error" class="text-danger"></p>
+                        <label class="form-label" for="form11Example2">City/Locality Name</label>
                       </div>
                     </div>
                   </div>
@@ -89,27 +96,31 @@
                   <div class="row mb-4">
                     <div class="col">
                       <div class="form-outline">
-                        <input type="text" id="form11Example1" required name="district" class="form-control" />
-                        <label class="form-label" for="form11Example1">District name</label>
+                        <input type="text" id="districtName" required name="district" placeholder="District Name" class="form-control" />
+                        <p id="District_Name_Error" class="text-danger"></p>
+                        <label class="form-label" for="form11Example1">District Name</label>
                       </div>
                     </div>
                     <div class="col">
                       <div class="form-outline">
-                        <input type="text" id="form11Example2" required name="state" class="form-control" />
-                        <label class="form-label" for="form11Example2">State name</label>
+                        <input type="text" id="stateName" required placeholder="State Name" name="state" class="form-control" />
+                        <p id="State_Name_Error" class="text-danger"></p>
+                        <label class="form-label" for="form11Example2">State Name</label>
                       </div>
                     </div>
                   </div>
     
                   <!-- Email input -->
                   <div class="form-outline mb-4">
-                    <input type="number" id="form11Example5" required name="pin" class="form-control" />
+                    <input type="number" id="pin" placeholder="PIN CODE" required name="pin" class="form-control" />
+                    <p id="PIN_Code_Error" class="text-danger"></p>
                     <label class="form-label" for="form11Example5">PIN</label>
                   </div>
     
                   <!-- Number input -->
                   <div class="form-outline mb-4">
-                    <input type="number" id="form11Example6" req name="phone" class="form-control" />
+                    <input type="number" id="mobile" req name="phone" placeholder="Mobile Number" class="form-control" />
+                    <p id="Mobile_Number_Error" class="text-danger"></p>
                     <label class="form-label" for="form11Example6">Mobile</label>
                   </div>
   

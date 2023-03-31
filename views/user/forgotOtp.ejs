@@ -8,9 +8,13 @@
       </div>
       <div class="caixa__login-input">
         <input type="number" name="otp" required />
+        <p id="emailError" class="text-danger"></p>
         <label>TYPE OTP</label>
-      </div>
+        <%if(locals.err_msg){%>
+          <p><%=err_msg%></p>
 
+       <%}%>
+      </div>
       <button type="submit" class="bg-transparent">
         <span></span>
         <span></span>

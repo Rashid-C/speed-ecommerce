@@ -30,28 +30,28 @@
               <div class="row">
                 <div class="form-outline mb-4">
                   <div class="form-outline">
-                    <input type="name" id="name2" name="name" placeholder="Name of the product" required value="<%=productE.name%>" class="form-control" />
+                    <input type="name" id="name2" name="name" placeholder="Name of the product"  value="<%=productE.name%>" class="form-control" />
                     <p id="ProductNameError" class="text-danger"></p>
                     <label class="form-label" for="name"></label><br>
                   </div>
                 </div>
                 <div class="form-outline mb-4">
                   <div class="form-outline">
-                    <input type="brand" id="brand" name="brand" placeholder="Brand"  required value="<%=productE.brand%>" class="form-control" />
+                    <input type="brand" id="brand" name="brand" placeholder="Brand"   value="<%=productE.brand%>" class="form-control" />
                     <p id="brandNameError" class="text-danger"></p>
                     <label class="form-label" for="brand"></label><br>
                   </div>
                 </div>
                 <div class="form-outline mb-4">
                   <div class="form-outline">
-                    <input type="text" id="description" name="description" value="<%=productE.description%>" required placeholder="Description" class="form-control" />
+                    <input type="text" id="description" name="description" value="<%=productE.description%>"  placeholder="Description" class="form-control" />
                     <p id="descriptionNameError" class="text-danger"></p>
                     <label class="form-label" for="description"></label><br>
                   </div>
                 </div>
                 <div class="form-outline mb-4">
                   <div class="form-outline">
-                    <input type="number" id="stock" name="stock" placeholder="Stock" value="<%=productE.stock%>" required class="form-control" />
+                    <input type="number" id="stock" name="stock" placeholder="Stock" value="<%=productE.stock%>"  class="form-control" />
                     <p id="stockNameError" class="text-danger"></p>
                     <label class="form-label" for="stock"></label><br>
                   </div>
@@ -60,7 +60,7 @@
                   <div class="form-outline mb-4">
                     <!-- <input class="form-control"  placeholder="Category" id="category" required name="category"> -->
                     
-                  <select name="category" class="form-select" aria-label="Default select example">
+                  <select name="category" class="form-select" required aria-label="Default select example">
                   <option disabled selected>Category</option>
                   <%Category.forEach((Data)=>{%>
                     <option><%=Data.category%></option>
@@ -76,7 +76,7 @@
                 
                 <div class="form-outline mb-4">
                   <div class="form-outline">
-                    <input type="number"  id="price" name="price" placeholder="Price" value="<%=productE.price%>" required class="form-control" />
+                    <input type="number"  id="price" name="price" placeholder="Price" value="<%=productE.price%>"  class="form-control" />
                     <p id="priceNameError" class="text-danger"></p>
 
                     <label class="form-label" for="price"></label><br>
@@ -84,7 +84,7 @@
                 </div>
                 <div class="form-outline mb-4">
                   <div class="form-outline">
-                    <input type="number" id="size" name="size" placeholder="Size" value="<%=productE.size%>" required class="form-control" />
+                    <input type="number" id="size" name="size" placeholder="Size" value="<%=productE.size%>"  class="form-control" />
                     <p  id="sizeNameError" class="text-danger"></p>
                     <label class="form-label" for="size"></label><br>
                   </div>

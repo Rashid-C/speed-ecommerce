@@ -11,17 +11,14 @@ module.exports = {
 
   verifyUser: (req, res, next) => {
     if (req.session.user) {
-        const email =req.session.user 
-        userdetails.findOne({email:email}).then((user)=>{
-          if (user.isBlocked) {
-
-            res.redirect("/logout")
-           
-            
-          } else {
-            next()
-          }
-        })
+      const email = req.session.user;
+      userdetails.findOne({ email: email }).then((user) => {
+        if (user.isBlocked) {
+          res.redirect("/logout");
+        } else {
+          next();
+        }
+      });
     } else {
       res.redirect("/login");
     }

@@ -1,40 +1,36 @@
-const mongoose=require('mongoose')
-const schema=mongoose.Schema
-const moment=require('moment')
-const ObjectId=schema.objectId
+const mongoose = require("mongoose");
+const schema = mongoose.Schema;
+const moment = require("moment");
 
-const couponSchema=new schema(
-    {
-        couponName:{
-            type:String,
-            required:true,
-        },
-        discount:{
-            type:Number,
-            required:true,
-        },
-        // maxLimit:{
-        //     type:Number,
-        //     required:true,
-        // },
-        startDate:{
-            type:String,
-            default:moment().format("DD/MM/YYYY") + ";" + moment().format("hh:mm:ss"),
-        },
-        expiryDate:{
-            type:String,
-        },
-        
-        userId:{
-                type:String,
-            },
-        },
- 
+const couponSchema = new schema(
+  {
+    couponName: {
+      type: String,
+      required: true,
+    },
+    discount: {
+      type: Number,
+      required: true,
+    },
+
+    startDate: {
+      type: String,
+      default:
+        moment().format("DD/MM/YYYY") + ";" + moment().format("hh:mm:ss"),
+    },
+    expiryDate: {
+      type: String,
+    },
+
+    userId: {
+      type: String,
+    },
+  },
 
   {
-    timestamps:true,
-  },
+    timestamps: true,
+  }
 );
 
-const coupon=mongoose.model("coupon",couponSchema);
-module.exports=coupon
+const coupon = mongoose.model("coupon", couponSchema);
+module.exports = coupon;

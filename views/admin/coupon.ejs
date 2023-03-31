@@ -1,4 +1,6 @@
 <%- include('../layouts/adminpartial.ejs') %>
+<script src="/js/editCouponValidation.js" defer></script>
+
   <!-- Table Start -->
  
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
@@ -10,44 +12,27 @@
                 <h6 class="mb-4">VIEW-COUPON</h6>
                 <div class="table-responsive">
                     <table id="tableform" class="table">
-                       
                         <thead>
                             <tr>
-                               
                                 <th scope="col">SI No</th>
                                 <th scope="col">COUPON NAME</th>
                                 <th scope="col">DISCOUNT</th>
                                 <th scope="col">EXPIRY DATE</th>
                                 <th scope="col">OPTIONS</th>
-                           
                             </tr>
                         </thead>
                         <tbody>
                             <% couponData.forEach((data,index)=>{ %>
                             <tr>
-                           
-                             
                                 <td><%= index+1%></td>
                                 <td><%= data.couponName %></td>
                                 <td><%= data.discount %></td>
                                 <td><%= data.expiryDate %></td>
                                 <td>
-                                    <!-- <a href="/admin/editCoupon/<%=data._id%>"><button type="button" data-bs-toggle="modal"    class="btn btn-success">EDIT</button></a> -->
                                     <button  data-bs-toggle="modal"  name="edit" data-bs-target="#EDITModal<%= data._id %>" type="submit" class="btn btn-warning">EDIT</button>
-                                   
                                     <a href="/admin/deleteCoupon/<%=data._id%>"><button type="button" class="btn btn-danger">DELETE</button></a>
-
-
-                                    <!-- edit button modal start -->
-                                  
  <!---------------------------------------- Edit modal start ------------------------------------------->
-                                <div
-                                class="modal fade"
-                                id="EDITModal<%= data._id %>"
-                                tabindex="-1"
-                                aria-labelledby="exampleModalLabel"
-                                aria-hidden="true"
-                                >
+                                <div class="modal fade" id="EDITModal<%= data._id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
                                 <div class="modal-dialog">
                                   <div class="modal-content">
                                     <div class="modal-header">
@@ -55,66 +40,50 @@
                                       <button type="button"  class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                      <form action="/admin/editCoupon/<%=data._id%>" method="post">
+                                      <form action="/admin/editCoupon/<%=data._id%>" method="post"  onsubmit="return editCouponValidation(this)">
                                         <div class="mb-3">
                                         </div>
                                         <div class="mb-3">
                                           <label for="recipient-name"  class="col-form-label">Edit Coupon:</label>
                                           <input type="text" required name="coupon" placeholder="<%=data.couponName%>"  class="form-control" id="recipient-name">
+                                            <p id="ecoupon_name_error" class="text-danger"></p>
                                         </div>  
-
                                         <div class="mb-3">
                                           <label for="recipient-name"  class="col-form-label">Edit Discount:</label>
                                           <input type="number" required name="discount" placeholder="<%=data.discount%>"  class="form-control" id="recipient-name">
+                                            <p id="ediscound_error" class="text-danger"></p>
                                         </div> 
-
                                         <div class="mb-3">
-                                          <label for="recipient-name"  class="col-form-label">Edit ExpiryDate:</label>
+                                          <label for="recipient-name"  class="col-form-label">Edit ExpiryDate:YYY-MM-DD</label>
                                           <input type="text" required name="expirydate" placeholder="<%=data.expiryDate%>"  class="form-control" id="recipient-name">
+                                          <p id="exp_name_error" class="text-danger"></p>
                                         </div> 
-                         
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                       <button type="submit" class="btn btn-success">Save Category</button>
                                     </div>
-                                  
                                   </div>
                                  </form>
                                 </div>
                               </div>
-
-
                                 <!---------------------------------- ---Edit modal end ------------------------------------------->
-      
                                     <!-- edit button modal end -->
-
-                                  
                                 </td>
-                            
-                               
                             </tr>
-
-                        
                             <%})%> 
                         </tbody>
-
                         <div class="text-center mb-2">
                             <a href="/admin/addCoupon" class="btn btn-success">Go To Coupon</a>
                             </div>
                     </table>
-                    
                 </div>          
             </div>
         </div>
     </div>
 </form>
+</div>
 
-
-</div>
-</div>
-</div>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>

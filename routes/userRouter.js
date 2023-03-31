@@ -30,7 +30,7 @@ router.get("/userAddress", verifyUser, userController.addAddress);
 router.post("/postUserAddress", verifyUser, userController.postAddress);
 router.get("/removeWishList/:id", verifyUser, userController.removeWishList);
 router.post("/changeQuantity", userController.addQuantity);
-router.get("/checkOut", verifyUser, userController.checkOut); 
+router.get("/checkOut", verifyUser, userController.checkOut);  
  
 router.get("/success",verifyUser, userController.success); 
 router.get("/cancel",verifyUser,userController.cancel)      
@@ -48,7 +48,7 @@ router.post("/search",verifyUser,userController.search)
 router.get("/filterView/:id",verifyUser,userController.filter) 
 router.get("/MyOrders",verifyUser,userController.MyOrders)
 router.get("/userOrderStatusChange/:id",verifyUser,userController.userOrderStatusChange)
-router.get("/orderReview",verifyUser,userController.orderReview) 
+router.get("/orderReview/:id",verifyUser,userController.orderReview) 
 router.post("/applyCoupon",verifyUser,userController.applyCoupon)
 
 

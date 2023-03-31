@@ -44,10 +44,6 @@ router.get("/salesReportWeek",verifyAdmin,adminController.salesReportWeek)
 router.get("/salesReportMonth",verifyAdmin,adminController.salesReportMonth)
 router.get("/salesReportYear",verifyAdmin,adminController.salesReportYear)
 
-router.get("/offer",verifyAdmin,adminController.offer)
-router.post("/offerDelete/:id",verifyAdmin,adminController.offerDelete)
-router.post("/editOffer/:id",verifyAdmin,adminController.editOffer)
-router.post("/createOffer",verifyAdmin,adminController.createOffer)
 
 
 

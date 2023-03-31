@@ -1,22 +1,94 @@
 <link rel="stylesheet" href="/user/css/orderReview.css" />
-<div>
-  <a href="/"><img src="/img/logo.png" alt="" /></a>
-</div>
-<div class="container my-5 d-sm-flex justify-content-center">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img src="/img/logo.png" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/wishList">Wishlist</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/userProfile">My Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/shop">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/MyOrders">My Orders</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</nav>
+
+<style>
+  /* Styling for the menu icon */
+  .navbar-toggler-icon {
+    background-image: url('https://cdn4.iconfinder.com/data/icons/wirecons-free-vector-icons/32/menu-alt-512.png');
+    background-size: cover;
+    height: 20px;
+    width: 20px;
+    transition: transform 0.3s;
+  }
+
+  /* Styling for the menu icon when toggled */
+  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    transform: rotate(90deg);
+  }
+
+  /* Styling for the navigation links */
+  .navbar-nav .nav-link {
+    font-size: 18px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-right: 20px;
+  }
+
+  /* Styling for the active navigation link */
+  .navbar-nav .active > .nav-link {
+    font-weight: bold;
+    color: #007bff;
+  }
+
+  /* Styling for the navbar brand */
+  .navbar-brand img {
+    height: 40px;
+    width: auto;
+  }
+</style>
+
+<div class="container my-5 d-sm-flex justify-content-center pt-5">
   <div class="card px-2">
     <div class="card-header bg-white">
       <div class="row px-3">
         <div class="col">
           <h3 class="text-primary">Delivery Address:</h3>
-          <h6><%=userData.primaryAddress.firstName%></h6>
-          <h6><%=userData.primaryAddress.lastName%></h6>
-          <h6><%=userData.primaryAddress.house%></h6>
-          <h6><%=userData.primaryAddress.street%></h6>
-          <h6><%=userData.primaryAddress.city%></h6>
-          <h6><%=userData.primaryAddress.district%></h6>
-          <h6><%=userData.primaryAddress.state%></h6>
-          <h6><%=userData.primaryAddress.pin%></h6>
-          <h6><%=userData.primaryAddress.mobile%></h6>
+          <h6><%=orderData.address.firstName%></h6>
+          <h6><%=orderData.address.lastname%></h6>
+          <h6><%=orderData.address.house%></h6>
+          <h6><%=orderData.address.street%></h6>
+          <h6><%=orderData.address.city%></h6>
+          <h6><%=orderData.address.district%></h6>
+          <h6><%=orderData.address.state%></h6>
+          <h6><%=orderData.address.pin%></h6>
+          <h6><%=orderData.address.mobile%></h6>
         </div>
       </div>
       <div class="row justify-content-between">
@@ -24,7 +96,7 @@
           <a href="/#">
             <p class="text-muted">
               Need Help!..Contact us.
-              <span class="font-weight-bold text-dark">7356958972</span>
+              <span class="font-weight-bold text-dark">+91 735 695 8972</span>
             </p></a
           >
         </div>
@@ -47,6 +119,35 @@
     </div>
   </div>
 </div>
+
+
+<footer class="bg-dark text-white py-3 ">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h5>About Us</h5>
+        <p> Our story began with an attempt to explore, those
+          simple pleasures of life! What a day it was, when we
+          did our first bike ride! Life opened up, with
+          beautiful sun rises and splendid weekends!</p>
+      </div>
+      <div class="col-md-4">
+        <h5>Contact Us</h5>
+        <p>Email: speedcycles@gmail.com<br>Phone: +91 735 695 8972</p><p>Website: speedcycles.online</p>
+       
+      </div>
+      
+      <div class="col-md-4">
+        <h5>Follow Us</h5>
+        <ul class="list-unstyled">
+          <li><a href="www.facebook.com"><i class="fa fa-facebook"></i> Facebook</a></li>
+          <li><a href="www.twitter.com"><i class="fa fa-twitter"></i> Twitter</a></li>
+          <li><a href="stagram.com"><i class="fa fa-instagram"></i> Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
 
 <link
   rel="stylesheet"

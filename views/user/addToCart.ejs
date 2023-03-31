@@ -99,7 +99,11 @@
                   <span><strong></strong></span>
                 </li>
               </ul>
+              <%if(sum>0){%>
                <a href="/checkOut" class="btn btn-primary">Go to checkout</a>
+               <%}else{%>
+               <p class="text-danger">No Cart Data Availabe Here, You can't go to checkout</p>
+               <%}%>
            
           </div>
         </div>

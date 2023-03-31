@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const schema = mongoose.Schema;
-// const ObjectId = mongoose.Types.ObjectId;
 const ObjectId = schema.ObjectId;
 
 const orderSchema = new schema(
@@ -41,33 +40,28 @@ const orderSchema = new schema(
       },
     },
 
-    orderItem:[
-      { type:ObjectId,
-      ref:"products"}
-    ],
+    orderItem: [{ type: ObjectId, ref: "products" }],
     totalAmount: {
       type: Number,
       required: true,
     },
-    orderStatus : {
-        type : String,
-        required : true
+    orderStatus: {
+      type: String,
+      required: true,
     },
     paymentStatus: {
       type: String,
-      // default: "Not Paid",
     },
     paymentMethod: {
       type: String,
       required: true,
     },
-    date:{
-      type:String,
-      required:true,
-    }
+    date: {
+      type: String,
+      required: true,
+    },
   },
-  { timestamps: true },
-
+  { timestamps: true }
 );
 
 const order = mongoose.model("order", orderSchema);
