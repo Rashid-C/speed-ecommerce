@@ -1,47 +1,45 @@
-function editCouponValidation(modal) {
-  couponName = document.getElementById("coupon");
-  discountAmount = document.getElementById("discount");
-  exDate = document.getElementById("eexpirydate");
+function editCouponValidation(e) {
+  const formData = new FormData(e.target); // create a new FormData object with the form data
+  const name = formData.get('coupon'); // get the value of the 'name' field
+  const discount = formData.get('discount'); 
+  const exDate = formData.get('expirydate');
+  
 
-  if (couponName.value == "") {
+ 
+
+  if (name == "") {
     document.getElementById("ecoupon_name_error").innerHTML =
       "Please Enter Coupon Name";
-    couponName.focus();
     return false;
   }
   var regexCouponName = /^(?!.*([a-zA-Z])\1\1)[a-zA-Z]{3,10}$/;
-  if (regexCouponName.test(couponName.value) === false) {
+  if (regexCouponName.test(name) === false) {
     document.getElementById("ecoupon_name_error").innerHTML =
-      "Name Should Not Contain Numbers & Special Characters..! OR Invalid Data Formate (XXX) OR Atleast 3 Letters";
-    couponName.focus();
+      "Name Should Not Contain Numbers & Special Characters..! OR Invalid Data Formate (XXX) OR Atleast 3 Letters\n Max: 10 Letters";
     return false;
   }
   // ---------------------------------
-  if (discountAmount.value == "") {
+  if (discount == "") {
     document.getElementById("ediscound_error").innerHTML =
       "Please Enter Discount Amount";
-    discountAmount.focus();
     return false;
   }
   var regexDiscountValue = /^(?:[1-9]\d{0,2}|1000)$/;
-  if (regexDiscountValue.test(discountAmount.value) === false) {
+  if (regexDiscountValue.test(discount) === false) {
     document.getElementById("ediscound_error").innerHTML =
       "Discount Amount only allow Positive Numbers and Max:Amount Is 1000";
-    discountAmount.focus();
     return false;
   }
   // ------------------------------
-  if (exDate.value == "") {
+  if (exDate == "") {
     document.getElementById("exp_name_error").innerHTML =
       "Please Enter Discount Amount";
-    exDate.focus();
     return false;
   }
-  var regexExpDate = /^\d{4}-(0[1-9]|1[0-2])-([0-2][1-9]|3[0-1])$/;
-  if (regexExpDate.test(exDate.value) === false) {
+  var regexExpDate = /^(?!0000)[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
+  if (regexExpDate.test(exDate) === false) {
     document.getElementById("exp_name_error").innerHTML =
       "Discount Amount only allow Positive Numbers and Max:Amount Is 1000";
-    exDate.focus();
     return false;
   }
   return true;

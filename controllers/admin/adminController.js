@@ -106,7 +106,7 @@ exports.deleteProduct = (req, res) => {
   const productId = req.params.id;
   products
     .findByIdAndUpdate({ _id: productId }, { isDeleted: true })
-    .then((productData) => {
+    .then(() => {
       res.redirect("/admin/product");
     });
 };
@@ -115,7 +115,7 @@ exports.restoreProduct = (req, res) => {
   const productId = req.params.id;
   products
     .findByIdAndUpdate({ _id: productId }, { isDeleted: false })
-    .then((productData) => {
+    .then(() => {
       res.redirect("/admin/product");
     });
 };
@@ -149,7 +149,7 @@ exports.postEdit = (req, res) => {
         image: image,
       }
     )
-    .then((productE) => {
+    .then(() => {
       res.redirect("/admin/product");
     });
 };
@@ -247,7 +247,7 @@ exports.addCategory = async (req, res) => {
         newCategoryData.save().then((result) => {
           res.redirect("/admin/adminCategory");
         });
-      }
+      } 
     });
   } catch (error) {
     console.log(error + "add category error");
@@ -268,7 +268,6 @@ exports.deleteCategory = async (req, res) => {
 exports.editCategory = async (req, res) => {
   try {
     const id = req.params.id;
-    const Data = req.body;
     const newCategoryData = req.body.category;
     const fullCategoryData = await category.find();
     const oldCategory = await category.find({ _id: id });
@@ -304,9 +303,8 @@ exports.editCategory = async (req, res) => {
 exports.viewOrder = async (req, res) => {
   try {
     const id = req.params.id;
-    const orderdata = await order.findOne({ _id: id });
     const ObjectId = mongoose.Types.ObjectId;
-    const data = await order
+   order
       .aggregate([
         {
           $match: { _id: ObjectId(id) },

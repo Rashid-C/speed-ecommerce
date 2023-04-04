@@ -4,7 +4,7 @@ const userController = require("../controllers/user/userController");
 const { verifyUser } = require("../middleware/session");
 const multer = require("multer");
 
-const { storage, cloudinary } = require("../middleware/cloudinary");
+const { storage,  } = require("../middleware/cloudinary");
 const upload = multer({ storage });
 
  

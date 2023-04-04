@@ -119,7 +119,7 @@ exports.user_verification = async (req, res) => {
     if (userData) {
       if (userData.isBlocked) {
         res.render("user/login", {
-          err_msg: "You were Blocked by admin ...!",
+          err_msg: "You were Blocked by Admin ...!",
         });
       } else {
         bcryptjs.compare(password, userData.password).then((result) => {
@@ -128,14 +128,14 @@ exports.user_verification = async (req, res) => {
             res.redirect("/");
           } else {
             res.render("user/login", {
-              err_msg: "invalid user...!",
+              err_msg: "Invalid User...!",
             });
           }
         });
       }
     } else {
       res.render("user/login", {
-        err_msg: "invalid user...!",
+        err_msg: "Invalid User...!",
       });
     }
   } catch (error) {
@@ -248,9 +248,7 @@ exports.addTocartUser = async (req, res) => {
     const id = req.session.user;
     const proId = req.params.id;
     const productId = mongoose.Types.ObjectId(proId);
-    const proObj = {
-      productId,
-    };
+  
     const user = await userDetails.findOne({ email: id });
     if (user) {
       const cart = await carts.findOne({ userId: user.id });
@@ -308,7 +306,7 @@ exports.removeCartUser = async (req, res) => {
         { userId: userdata.id },
         { $pull: { product: { productId: data } } }
       )
-      .then((response) => {
+      .then(() => {
         res.redirect("/getCart");
       });
   } catch (error) {
@@ -387,9 +385,7 @@ exports.postWishList = async (req, res) => {
     const id = req.session.user;
     const proId = req.params.id;
     const productId = mongoose.Types.ObjectId(proId);
-    const proObj = {
-      productId,
-    };
+   
     const user = await userDetails.findOne({ email: id });
     if (user) {
       const wishL = await wishList.findOne({ userId: user.id });
@@ -398,16 +394,13 @@ exports.postWishList = async (req, res) => {
           (product) => product.productId == proId
         );
         if (wishExi != -1) {
-          await wishList.aggregate([
-            {
-              $unwind: "$product",
-            },
-          ]);
-          await wishList.updateOne(
+          
+        
+       const existData =  await wishList.findOne(
             { userId: user.id, "product.productId": productId },
-            { $inc: { "product.$.quantity": 1 } }
-          );
-          res.redirect("/wishList");
+          ) 
+         
+          // res.redirect("/wishList");
         } else {
           await wishList.updateOne(
             { userId: user.id },
@@ -522,7 +515,7 @@ exports.postAddress = async (req, res) => {
           },
         }
       )
-      .then((user) => {
+      .then(() => {
         res.redirect("/userProfile");
       });
   } catch (error) {
@@ -542,7 +535,7 @@ exports.removeWishList = async (req, res) => {
         { userId: userdata.id },
         { $pull: { product: { productId: data } } }
       )
-      .then((response) => {
+      .then(() => {
         res.redirect("/wishList");
       });
   } catch (error) {
@@ -554,7 +547,6 @@ exports.removeWishList = async (req, res) => {
 exports.addQuantity = async (req, res) => {
   try {
     const data = await req.body;
-    const user = req.session.user;
     const objId = mongoose.Types.ObjectId(data.product);
     await carts.aggregate([
       {
@@ -649,6 +641,7 @@ exports.checkOut = async (req, res) => {
 exports.validateChechout = async (req, res) => {
   const user = req.session.user;
   const data = req.body;
+  
   let cartCount;
   const userData = await userdetails.findOne({ email: user });
   if (user) {
@@ -717,9 +710,9 @@ exports.validateChechout = async (req, res) => {
             item_list: {
               items: [
                 {
-                  name: "Red Sox Hat",
+                  name: "Speed Cycles",
                   sku: "001",
-                  price: "25.00",
+                  price: data.sum,
                   currency: "USD",
                   quantity: 1,
                 },
@@ -727,7 +720,7 @@ exports.validateChechout = async (req, res) => {
             },
             amount: {
               currency: "USD",
-              total: "25.00",
+              total: data.sum,
             },
             description: "Hat for the best team ever",
           },
@@ -805,14 +798,14 @@ exports.success = async (req, res) => {
   let cartCount;
   const userData = await userdetails.findOne({ email: user });
   if (userData) {
-    order
+    await order
       .updateOne(
         {
           userId: userData.id,
         },
         { $set: { paymentStatus: "Paid", orderStatus: "Shipping" } }
       )
-      .then((data) => {});
+      
   }
   const payerId = req.query.PayerID;
   const paymentId = req.query.paymentId;

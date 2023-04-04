@@ -61,7 +61,7 @@
                       </div>
                       <form
                         action="/admin/editCategory/<%=data._id%>"
-                        method="post"
+                        method="post" onsubmit="return editcategory(event)"
                       >
                         <div class="modal-body">
                           <div class="mb-3">
@@ -196,6 +196,26 @@
       return false;
     }
     return true;
+  }
+</script>
+<script>
+  function editcategory(ev){
+    const formData2 = new FormData2(ev.target);
+    const name1=formData2.get('category')
+
+
+    if (name1 == "") {
+    document.getElementById("ecoupon_name_error").innerHTML =
+      "Please Enter Coupon Name";
+    return false;
+  }
+  var regexCouponName = /^(?!.*([a-zA-Z])\1\1)[a-zA-Z]{3,15}$/;
+  if (regexCouponName.test(name1) === false) {
+    document.getElementById("ecoupon_name_error").innerHTML =
+      "Name Should Not Contain Numbers & Special Characters..! OR Invalid Data Formate (XXX) OR Atleast 3 Letters\n Max: 15 Letters";
+    return false;
+  }
+  return true
   }
 </script>
 <!-- -------------------------- -->
