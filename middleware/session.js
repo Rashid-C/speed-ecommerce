@@ -16,6 +16,7 @@ module.exports = {
         if (user.isBlocked) {
           res.redirect("/logout");
         } else {
+          console.log(req.session.user)
           next();
         }
       });

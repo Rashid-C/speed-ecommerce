@@ -690,7 +690,7 @@ exports.validateChechout = async (req, res) => {
     });
     orderdetails.save().then((result) => {
       if (result) {
-        carts.deleteOne({ userId: userData.id }).then((result) => {});
+        carts.deleteOne({ userId: userData.id }).then(() => {});
       }
     });
     if (paymentdata === "cod") {
@@ -702,8 +702,8 @@ exports.validateChechout = async (req, res) => {
           payment_method: "paypal",
         },
         redirect_urls: {
-          return_url: "https://speedcycles.online/success",
-          cancel_url: "https://speedcycles.online/cancel",
+          return_url: "http://localhost:3000/success",
+          cancel_url: "http://localhost:3000/cancel",
         },
         transactions: [
           {
@@ -712,7 +712,7 @@ exports.validateChechout = async (req, res) => {
                 {
                   name: "Speed Cycles",
                   sku: "001",
-                  price: data.sum,
+                  price: "25.00",
                   currency: "USD",
                   quantity: 1,
                 },
@@ -720,7 +720,7 @@ exports.validateChechout = async (req, res) => {
             },
             amount: {
               currency: "USD",
-              total: data.sum,
+              total: "25.00",
             },
             description: "Hat for the best team ever",
           },
@@ -795,6 +795,8 @@ exports.validateChechout = async (req, res) => {
 // ---------------------payment----success------------------------
 exports.success = async (req, res) => {
   const user = req.session.user;
+  
+
   let cartCount;
   const userData = await userdetails.findOne({ email: user });
   if (userData) {
@@ -804,7 +806,7 @@ exports.success = async (req, res) => {
           userId: userData.id,
         },
         { $set: { paymentStatus: "Paid", orderStatus: "Shipping" } }
-      )
+      ).then((data) => {});
       
   }
   const payerId = req.query.PayerID;
@@ -1077,7 +1079,7 @@ exports.MyOrders = async (req, res) => {
         },
       ])
       .then((orderData) => {
-        console.log(orderData);
+       
         res.render("user/MyOrders", { user, orderData, cartCount, userData });
       });
   } catch (error) {
@@ -1105,7 +1107,7 @@ exports.applyCoupon = async (req, res) => {
   const user = req.session.user;
   if (couponDetails) {
     const couponData = await coupon.findOne({ couponName: couponDetails });
-    console.log(couponData);
+   
     if (couponData === null) {
       res.json({ err_msg: "no coupon available in that name" });
     } else {
@@ -1183,13 +1185,13 @@ exports.applyCoupon = async (req, res) => {
     console.log("loooo ");
   }
 
-  // Send a response back to the client
+
 };
 // ----------------------userOrderStatusChange---------------------
 exports.userOrderStatusChange = async (req, res) => {
   try {
     const orderId = req.params.id;
-    const Data = req.body;
+   
     await order
       .findByIdAndUpdate({ _id: orderId }, { orderStatus: "Cancelled" })
       .then(() => {
