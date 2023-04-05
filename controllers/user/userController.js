@@ -702,8 +702,8 @@ exports.validateChechout = async (req, res) => {
           payment_method: "paypal",
         },
         redirect_urls: {
-          return_url: "http://speedcycles.online/success",
-          cancel_url: "http://speedcycles.online/cancel",
+          return_url: "https://speedcycles.online/success",
+          cancel_url: "https://speedcycles.online/cancel",
         },
         transactions: [
           {
